@@ -39,6 +39,8 @@ class PathgatherClient(object):
         self.base_url = 'https://{0}/v1'.format(host)
 
         self.session = requests.Session()
+        self.session.proxies = {'https': 'https://localhost:8888/'}
+        self.session.verify = False
         self.session.headers.update(
             {'Accept': 'application/json',
              'Content-Type': 'application/json',
