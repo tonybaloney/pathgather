@@ -18,6 +18,8 @@ import requests
 
 from pathgather.exceptions import PathgatherApiException
 from .users import UsersClient
+from .content import ContentClient
+from .paths import PathsClient
 
 
 class PathgatherClient(object):
@@ -47,6 +49,8 @@ class PathgatherClient(object):
              'Authorization': "Bearer {0}".format(api_key)})
 
         self.users = UsersClient(self)
+        self.content = ContentClient(self)
+        self.paths = PathsClient(self)
 
     def get(self, uri, params=None):
         try:

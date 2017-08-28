@@ -15,7 +15,7 @@ PathGather
 
 API client for PathGather
 
-* Free software: ISC license
+* Free software: Apache 2 license
 * Documentation: https://pathgather.readthedocs.org.
 
 Features
