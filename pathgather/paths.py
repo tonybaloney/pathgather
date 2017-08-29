@@ -39,8 +39,11 @@ class PathsClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        paths = self.client.get('paths', params=params)
-        return [self._to_path(i) for i in paths['results']]
+        paths = self.client.get_paged('paths', params=params)
+        results = []
+        for page in paths:
+            results.extend([self._to_path(i) for i in page['results']])
+        return results
 
     def get(self, id):
         """

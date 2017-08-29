@@ -26,7 +26,8 @@ class PathgatherClient(object):
     """
     The main API client
     """
-    def __init__(self, host, api_key):
+    def __init__(self, host, api_key, proxy=None,
+                 skip_ssl_validation=False):
         """
         Instantiate a new API client
 
@@ -35,14 +36,19 @@ class PathgatherClient(object):
 
         :param api_key: The API token (from the admin console)
         :type  api_key: ``str``
+
+        :param proxy: The proxy to connect through
+        :type  proxy: ``str``
         """
         self._api_key = api_key
 
         self.base_url = 'https://{0}/v1'.format(host)
 
         self.session = requests.Session()
-        self.session.proxies = {'https': 'https://localhost:8888/'}
-        self.session.verify = False
+        if proxy:
+            self.session.proxies = {'https': proxy}
+        if skip_ssl_validation:
+            self.session.verify = False
         self.session.headers.update(
             {'Accept': 'application/json',
              'Content-Type': 'application/json',
@@ -59,6 +65,21 @@ class PathgatherClient(object):
             result.raise_for_status()
 
             return result.json()
+        except requests.HTTPError as e:
+            raise PathgatherApiException(e.response.text, uri)
+
+    def get_paged(self, uri, params=None):
+        try:
+            page = None
+            end = False
+            while not end:
+                result = self.get(uri, params={'from': page})
+                next_page = result['next']
+                yield result
+                if next_page:
+                    page = next_page
+                else:
+                    end = True
         except requests.HTTPError as e:
             raise PathgatherApiException(e.response.text, uri)
 

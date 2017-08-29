@@ -36,8 +36,11 @@ class ContentClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        content = self.client.get('content', params=params)
-        return [self._to_content(i) for i in content['results']]
+        content = self.client.get_paged('content', params=params)
+        results = []
+        for page in content:
+            results.extend([self._to_content(i) for i in page['results']])
+        return results
 
     def get(self, id):
         """

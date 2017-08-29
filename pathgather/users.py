@@ -23,21 +23,24 @@ class UsersClient(object):
 
     def all(self, from_page=None):
         """
-        Get all users.
+        Get all users (will page results out)
 
-        :param from_page: Filter by first name
+        :param from_page: Start at page
         :type  from_page: ``int``
 
-        :return: A list of :class:`User`
-        :rtype: ``list`` of :class:`User`
+        :return: A list of users
+        :rtype: ``list`` of ``dict``
         """
         params = {}
 
         if from_page is not None:
             params['from'] = from_page
 
-        users = self.client.get('users', params=params)
-        return [self._to_user(i) for i in users['results']]
+        users = self.client.get_paged('users', params=params)
+        results = []
+        for page in users:
+            results.extend([self._to_user(i) for i in page['results']])
+        return results
 
     def get(self, id):
         """
