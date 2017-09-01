@@ -42,3 +42,20 @@ Paths class
 .. module:: pathgather.paths
 .. autoclass:: PathsClient
    :members:
+
+Models
+------
+
+.. module:: pathgather.models.user
+.. autoclass:: User
+   :members:
+
+.. module:: pathgather.models.skill
+.. autoclass:: UserSkill
+   :members:
+.. autoclass:: Skill
+   :members:
+
+.. module:: pathgather.models.department
+.. autoclass:: Department
+   :members:

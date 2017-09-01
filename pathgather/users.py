@@ -14,6 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from .utils import scrub
+from .models.user import User
+from .models.department import Department
+from .models.skill import UserSkill, Skill
+
 
 class UsersClient(object):
     """ Users API. """
@@ -29,7 +34,7 @@ class UsersClient(object):
         :type  from_page: ``int``
 
         :return: A list of users
-        :rtype: ``list`` of ``dict``
+        :rtype: ``list`` of :class:`pathgather.models.user.User`
         """
         params = {}
 
@@ -49,8 +54,8 @@ class UsersClient(object):
         :param id: The user id
         :type  id: ``str``
 
-        :return: An instance :class:`User`
-        :rtype: :class:`User`
+        :return: An instance :class:`pathgather.models.user.User`
+        :rtype: :class:`pathgather.models.user.User`
         """
         user = self.client.get('users/{0}'.format(id))
         return self._to_user(user)
@@ -104,8 +109,8 @@ class UsersClient(object):
         :param custom_fields: Any custom fields for this user
         :type  custom_fields: ``dict``
 
-        :return: An instance :class:`User`
-        :rtype: :class:`User`
+        :return: An instance :class:`pathgather.models.user.User`
+        :rtype: :class:`pathgather.models.user.User`
         """
         params = {
             'name': name,
@@ -181,8 +186,8 @@ class UsersClient(object):
         :param custom_fields: Any custom fields for this user
         :type  custom_fields: ``dict``
 
-        :return: An instance :class:`User`
-        :rtype: :class:`User`
+        :return: An instance :class:`pathgather.models.user.User`
+        :rtype: :class:`pathgather.models.user.User`
         """
         params = {}
         if name:
@@ -223,5 +228,13 @@ class UsersClient(object):
         self.client.delete('users/{0}'.format(id))
 
     def _to_user(self, data):
-        # TODO : Reflect into class model
-        return data
+        scrub(data)
+        if data['department']:
+            data['department'] = Department(**data['department'])
+        if data['user_skills']:
+            _skills = []
+            for skill in data['user_skills']:
+                skill['skill'] = Skill(**skill['skill'])
+                _skills.append(UserSkill(**skill))
+            data['user_skills'] = _skills
+        return User(**data)
