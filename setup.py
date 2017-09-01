@@ -15,12 +15,13 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'PyYAML', 
+    'PyYAML',
     'requests'
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+   'pytest',
+   'requests_staticmock'
 ]
 
 setup(
@@ -59,6 +60,6 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'],
-    test_suite='tests',
-    tests_require=test_requirements
+    tests_require=test_requirements,
+    setup_requires=['pytest-runner']
 )
