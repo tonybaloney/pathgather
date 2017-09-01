@@ -2,6 +2,10 @@
 History
 =======
 
+0.5.0 (2017-09-01)
+------------------
+
+* Added some unit tests to the base client and improved doc strings for documentation
 
 0.4.0 (2017-08-29)
 ------------------
