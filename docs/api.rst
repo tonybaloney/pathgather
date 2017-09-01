@@ -10,60 +10,96 @@ The PathgatherClient is used to connect to the API and it offers
 .. module:: pathgather
 .. autoclass:: PathgatherClient
    :members:
+   :undoc-members:
+   :show-inheritance:
 
-Common Types
-------------
 
-.. module:: pathgather.types
-.. autoclass:: ContentType
-   :members:
+Types
+=====
 
-.. module:: pathgather.types
-.. autoclass:: SkillLevel
-   :members:
+.. automodule:: pathgather.types
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-Users class
------------
+Accessors
+=========
 
-.. module:: pathgather.users
-.. autoclass:: UsersClient
-   :members:
+pathgather.content module
+-------------------------
 
-Content class
---------------
+.. automodule:: pathgather.content
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-.. module:: pathgather.content
-.. autoclass:: ContentClient
-   :members:
+pathgather.paths module
+-----------------------
 
-Paths class
---------------
+.. automodule:: pathgather.paths
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-.. module:: pathgather.paths
-.. autoclass:: PathsClient
-   :members:
+pathgather.users module
+-----------------------
+
+.. automodule:: pathgather.users
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Models
-------
+======
 
-.. module:: pathgather.models.content
-.. autoclass:: Content
-   :members:
+pathgather.models.content module
+--------------------------------
 
-.. module:: pathgather.models.user
-.. autoclass:: User
-   :members:
+.. automodule:: pathgather.models.content
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-.. module:: pathgather.models.department
-.. autoclass:: Department
-   :members:
+pathgather.models.department module
+-----------------------------------
 
-.. module:: pathgather.models.skill
-.. autoclass:: UserSkill
-   :members:
-.. autoclass:: Skill
-   :members:
+.. automodule:: pathgather.models.department
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-.. module:: pathgather.models.path
-.. autoclass:: Path
-   :members:
+pathgather.models.path module
+-----------------------------
+
+.. automodule:: pathgather.models.path
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pathgather.models.skill module
+------------------------------
+
+.. automodule:: pathgather.models.skill
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pathgather.models.user module
+-----------------------------
+
+.. automodule:: pathgather.models.user
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Errors
+======
+
+pathgather.exceptions module
+----------------------------
+
+.. automodule:: pathgather.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
