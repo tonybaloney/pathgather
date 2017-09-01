@@ -234,6 +234,9 @@ class UsersClient(object):
 
         :param id: The user ID
         :type  id: ``str``
+
+        :return: the skills for this user
+        :rtype: ``list`` :class:`pathgather.models.skill.UserSkill`
         """
         result = self.client.get('users/{0}/user_skills'.format(id))
         scrub(result['results'])
@@ -251,6 +254,9 @@ class UsersClient(object):
 
         :param level: The skill level
         :type  level: ``str`` or :enum:`pathgather.types.SkillLevel`
+
+        :return: Instance of :class:`pathgather.models.skill.UserSkill`
+        :rtype: :class:`pathgather.models.skill.UserSkill`
         """
         data = {
             'skill_id': skill.id,
@@ -272,6 +278,9 @@ class UsersClient(object):
 
         :param level: The skill level
         :type  level: ``str`` or :enum:`pathgather.types.SkillLevel`
+
+        :return: Instance of :class:`pathgather.models.skill.UserSkill`
+        :rtype: :class:`pathgather.models.skill.UserSkill`
         """
         data = {
             'skill_id': skill_id,
@@ -293,6 +302,9 @@ class UsersClient(object):
 
         :param level: The skill level
         :type  level: ``str`` or :enum:`pathgather.types.SkillLevel`
+
+        :return: Instance of :class:`pathgather.models.skill.UserSkill`
+        :rtype: :class:`pathgather.models.skill.UserSkill`
         """
         data = {
             'skill_name': skill_name,
@@ -301,6 +313,44 @@ class UsersClient(object):
         result = self.client.post('users/{0}/user_skills'.format(id), data)
         scrub(result)
         return UserSkill(**result)
+
+    def update_skill_level(self, id, skill, level):
+        """
+        Update the skill level for a user
+
+        :param id: The user ID
+        :type  id: ``str``
+
+        :param skill: The skill to add
+        :type  skill: :class:`pathgather.models.skill.Skill`
+
+        :param level: The skill level
+        :type  level: ``str`` or :enum:`pathgather.types.SkillLevel`
+
+        :return: Instance of :class:`pathgather.models.skill.UserSkill`
+        :rtype: :class:`pathgather.models.skill.UserSkill`
+        """
+        data = {
+            'skill_id': skill.id,
+            'level': level
+        }
+        result = self.client.post('users/{0}/user_skills'.format(id), data)
+        scrub(result)
+        return UserSkill(**result)
+
+    def delete_skill(self, skill):
+        """
+        Delete the skill for a user
+
+        :param id: The user ID
+        :type  id: ``str``
+
+        :param skill: The skill to delete
+        :type  skill: :class:`pathgather.models.skill.UserSkill` or ``str``
+        """
+        if isinstance(skill, UserSkill):
+            skill = skill.id
+        self.client.delete('users/{0}/user_skills/{1}'.format(id, skill))
 
     def _to_user(self, data):
         scrub(data)
