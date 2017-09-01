@@ -12,8 +12,9 @@ PathGather
         :target: https://readthedocs.org/projects/pathgather/?badge=latest
         :alt: Documentation Status
 
+The Pathgather python package is for connecting to and leveraging the Pathgather REST API from Python 2 or 3.
 
-API client for PathGather
+This project is not part of Pathgather or operated by Pathgather, it is an open-source package for consuming their API.
 
 * Free software: Apache 2 license
 * Documentation: https://pathgather.readthedocs.org.
@@ -27,26 +28,24 @@ Example
         import yaml
         import json
 
-
         with open('.tenant.yml', 'r') as tenant_yml:
-        config = yaml.load(tenant_yml)
+           config = yaml.load(tenant_yml)
 
         client = PathgatherClient(config['host'], config['api_key'])
 
         print(client.users.all())
 
-
         with open('dump.json', 'r') as dump_j:
-        data = json.load(dump_j)
+            data = json.load(dump_j)
 
         for user in data['users']:
-        print('Creating {0}'.format(user['full_name']))
-        new_user = client.users.create(
+            print('Creating {0}'.format(user['full_name']))
+            new_user = client.users.create(
                 name=user['full_name'], 
                 job_title=user['job_title'],
                 department='Learning and Development',
                 email=user['email'])
-        print(new_user)
+            print(new_user)
 
 
 Features

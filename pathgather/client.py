@@ -54,9 +54,9 @@ class PathgatherClient(object):
              'Content-Type': 'application/json',
              'Authorization': "Bearer {0}".format(api_key)})
 
-        self.users = UsersClient(self)
-        self.content = ContentClient(self)
-        self.paths = PathsClient(self)
+        self._users = UsersClient(self)
+        self._content = ContentClient(self)
+        self._paths = PathsClient(self)
 
     def get(self, uri, params=None):
         try:
@@ -107,3 +107,15 @@ class PathgatherClient(object):
             result.raise_for_status()
         except requests.HTTPError as e:
             raise PathgatherApiException(e.response.text)
+
+    @property
+    def users(self):
+        return self._users
+
+    @property
+    def content(self):
+        return self._content
+
+    @property
+    def paths(self):
+        return self._paths

@@ -3,15 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to PathGather's documentation!
-======================================
+Documentation for the Pathgather Python package
+===============================================
+
+The Pathgather python package is for connecting to and leveraging the Pathgather REST API from Python 2 or 3.
+
+This project is not part of Pathgather or operated by Pathgather, it is an open-source package for consuming their API.
+
+.. include:: ../README.rst
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   readme
    installation
    usage
    api
