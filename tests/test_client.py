@@ -19,7 +19,7 @@ TEST_TENANT = 'test.pathgather.com'
 TEST_URL = 'https://{0}'.format(TEST_TENANT)
 
 
-class TestMockClient(BaseMockClass):
+class MockClient(BaseMockClass):
     def _v1_headers(self, request, headers):
         if 'Authorization' not in headers.keys() or \
                 TEST_API_KEY not in headers['Authorization']:
@@ -76,54 +76,54 @@ def test_base_url():
 
 
 def test_headers():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.get('headers')
         assert response['good']
 
 
 def test_get_request():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.get('get')
         assert response['good']
 
 
 def test_get_bad_request():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         with pytest.raises(PathgatherApiException):
             client.get('get/bad')
 
 
 def test_post_request():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.post('post')
         assert response['good']
 
 
 def test_post_bad_request():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         with pytest.raises(PathgatherApiException):
             client.post('post/bad')
 
 
 def test_put_request():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.put('put')
         assert response is None
 
 
 def test_put_bad_request():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         with pytest.raises(PathgatherApiException):
             client.put('put/bad')
 
 
 def test_delete_request():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         client.delete('delete')
         assert True
 
 
 def test_delete_bad_request():
-    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
         with pytest.raises(PathgatherApiException):
             client.delete('delete/bad')

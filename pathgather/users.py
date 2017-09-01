@@ -354,9 +354,9 @@ class UsersClient(object):
 
     def _to_user(self, data):
         scrub(data)
-        if data['department']:
+        if 'department' in data:
             data['department'] = Department(**data['department'])
-        if data['user_skills']:
+        if 'user_skills' in data:
             _skills = []
             for skill in data['user_skills']:
                 skill['skill'] = Skill(**skill['skill'])

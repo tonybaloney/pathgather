@@ -22,4 +22,4 @@ class Department(object):
     id = attrib()
     name = attrib()
     created_at = attrib()
-    updated_at = attrib()
+    updated_at = attrib(default=None)
