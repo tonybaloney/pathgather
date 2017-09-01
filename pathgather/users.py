@@ -240,7 +240,11 @@ class UsersClient(object):
         """
         result = self.client.get('users/{0}/user_skills'.format(id))
         scrub(result['results'])
-        return [UserSkill(**skill) for skill in result['results']]
+        _skills = []
+        for skill in result['results']:
+            skill['skill'] = Skill(**skill['skill'])
+            _skills.append(UserSkill(**skill))
+        return _skills
 
     def add_skill(self, id, skill, level=SkillLevel.ALL):
         """
@@ -338,19 +342,19 @@ class UsersClient(object):
         scrub(result)
         return UserSkill(**result)
 
-    def delete_skill(self, skill):
+    def delete_skill(self, id, user_skill):
         """
         Delete the skill for a user
 
         :param id: The user ID
         :type  id: ``str``
 
-        :param skill: The skill to delete
-        :type  skill: :class:`pathgather.models.skill.UserSkill` or ``str``
+        :param user_skill: The user skill to delete
+        :type  user_skill: :class:`pathgather.models.skill.UserSkill` or ``str``
         """
-        if isinstance(skill, UserSkill):
-            skill = skill.id
-        self.client.delete('users/{0}/user_skills/{1}'.format(id, skill))
+        if isinstance(user_skill, UserSkill):
+            user_skill = user_skill.id
+        self.client.delete('users/{0}/user_skills/{1}'.format(id, user_skill))
 
     def _to_user(self, data):
         scrub(data)

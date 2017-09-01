@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "id": "69239547-a183-4520-8d50-20c0dc9091d0",
+      "level": "Intermediate",
+      "_type": "UserSkill",
+      "skill": {
+        "id": "089e70cb-9736-4c5a-b84c-fcb7c4d199a2",
+        "name": "Javascript",
+        "_type": "Skill"
+      }
+    },
+    {
+      "id": "5dc948b7-41c6-4641-a03a-f2ff76a0e40f",
+      "level": "Intermediate",
+      "_type": "UserSkill",
+      "skill": {
+        "id": "6526792f-885e-4da7-8d65-946a3a983614",
+        "name": "Ruby",
+        "_type": "Skill"
+      }
+    },
+    {
+      "id": "c1b5f855-dd8f-4b23-affc-5f6610b7fcd0",
+      "level": "Expert",
+      "_type": "UserSkill",
+      "skill": {
+        "id": "6d365dbf-0261-450e-9765-ac1ceef7b5c5",
+        "name": "C++",
+        "_type": "Skill"
+      }
+    }
+  ],
+  "next": null
+}

@@ -1,0 +1,39 @@
+{
+  "published": true,
+  "created_at": "2014-05-12T19:53:25.931-04:00",
+  "_type": "Path",
+  "saved_at": "2014-05-12T20:22:26.698-04:00",
+  "id": "57a89e01-59a9-4c39-8b64-4eabd512e9f5",
+  "published_at": "2014-05-12T20:22:26.698-04:00",
+  "updated_at": "2015-04-08T09:05:14.074-04:00",
+  "name": "Learning AngularJS",
+  "custom_id": null,
+  "tags": [
+    "AngularJS",
+    "Javascript"
+  ],
+  "skills": [],
+  "user": {
+    "location": "New York, NY",
+    "email": "jamie@pathgather.com",
+    "hire_date": "2013-03-14",
+    "job_title": "CTO",
+    "id": "4cea0449-666a-433f-8396-857e269449a9",
+    "created_at": "2014-04-26T12:51:29.407-04:00",
+    "_type": "User",
+    "deactivated": false,
+    "custom_id": null,
+    "last_active_at": "2015-03-30",
+    "last_name": "Davidson",
+    "department": {
+      "id": "90c8e4f2-3fba-4747-9322-00635bcff1bc",
+      "created_at": "2014-04-26T12:51:29.389-04:00",
+      "name": "Founders",
+      "_type": "Department",
+      "updated_at": "2014-04-26T12:51:29.389-04:00"
+    },
+    "first_name": "Jamie",
+    "admin": true,
+    "updated_at": "2015-03-30T22:01:55.893-04:00"
+  }
+}

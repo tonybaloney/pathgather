@@ -14,6 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from .models.path import Path
+from .models.skill import Skill
+from .models.user import User
+from .utils import scrub
+
 
 class PathsClient(object):
     """ Path API. """
@@ -59,5 +64,10 @@ class PathsClient(object):
         return self._to_path(path)
 
     def _to_path(self, data):
-        # TODO : Reflect into class model
-        return data
+        scrub(data)
+        _skills = []
+        for skill in data['skills']:
+            _skills.append(Skill(**skill))
+        data['skills'] = _skills
+        data['user'] = User(**data['user'])
+        return Path(**data)

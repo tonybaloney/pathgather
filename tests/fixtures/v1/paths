@@ -1,0 +1,98 @@
+{
+	"results": [{
+		"id": "57a89e01-59a9-4c39-8b64-4eabd512e9f5",
+		"_type": "Path",
+		"name": "Pathgather for L\u0026D Managers",
+		"created_at": "2017-08-25T01:34:12.169-04:00",
+		"updated_at": "2017-08-30T21:23:49.434-04:00",
+		"published": true,
+		"tags": [],
+		"published_at": "2017-08-25T01:34:12.169-04:00",
+		"saved_at": "2017-08-28T03:57:02.171-04:00",
+		"publicly_accessible": false,
+		"custom_id": null,
+		"user": {
+			"id": "9dbd1b62-2d6e-414a-9e4c-253d17693f09",
+			"custom_id": null,
+			"first_name": "Anthony",
+			"last_name": "Shaw 🇦🇺",
+			"created_at": "2017-08-24T14:20:40.990-04:00",
+			"updated_at": "2017-08-31T00:00:19.071-04:00",
+			"email": "someone@dimensiondata.com",
+			"job_title": "Group Director, Innovation and Technical Talent Development",
+			"hire_date": "2012-07-31",
+			"location": "Sydney, Australia",
+			"deactivated": false,
+			"last_active_at": "2017-08-31",
+			"admin": true,
+			"custom_fields": {},
+			"_type": "User",
+			"department": {
+				"id": "ce69f863-2278-45c3-9655-d3f32394f0ed",
+				"name": "Talent Development",
+				"_type": "Department",
+				"created_at": "2017-08-24T14:20:40.973-04:00",
+				"updated_at": "2017-08-24T14:20:40.973-04:00"
+			}
+		},
+		"skills": [{
+			"id": "aa4a1418-efdf-4745-9909-fa9c41f845b0",
+			"custom_id": null,
+			"name": "Learning and Development",
+			"_type": "Skill"
+		}]
+	}, {
+		"id": "00944a01-fe3c-424d-9174-06ad654d3e14",
+		"_type": "Path",
+		"name": "Introduction to Azure",
+		"created_at": "2017-08-25T00:42:59.876-04:00",
+		"updated_at": "2017-08-25T00:42:59.876-04:00",
+		"published": true,
+		"tags": [],
+		"published_at": "2017-08-25T00:42:59.876-04:00",
+		"saved_at": "2017-08-25T00:42:59.877-04:00",
+		"publicly_accessible": true,
+		"custom_id": null,
+		"user": {
+			"id": "9dbd1b62-2d6e-414a-9e4c-253d17693f09",
+			"custom_id": null,
+			"first_name": "Anthony",
+			"last_name": "Shaw 🇦🇺",
+			"created_at": "2017-08-24T14:20:40.990-04:00",
+			"updated_at": "2017-08-31T00:00:19.071-04:00",
+			"email": "someone@dimensiondata.com",
+			"job_title": "Group Director, Innovation and Technical Talent Development",
+			"hire_date": "2012-07-31",
+			"location": "Sydney, Australia",
+			"deactivated": false,
+			"last_active_at": "2017-08-31",
+			"admin": true,
+			"custom_fields": {},
+			"_type": "User",
+			"department": {
+				"id": "ce69f863-2278-45c3-9655-d3f32394f0ed",
+				"name": "Talent Development",
+				"_type": "Department",
+				"created_at": "2017-08-24T14:20:40.973-04:00",
+				"updated_at": "2017-08-24T14:20:40.973-04:00"
+			}
+		},
+		"skills": [{
+			"id": "51f4d360-393d-4615-af9c-223d054d2adc",
+			"custom_id": null,
+			"name": "azure",
+			"_type": "Skill"
+		}, {
+			"id": "0adf7d66-e63a-40f8-ac4d-611ded5cf0e1",
+			"custom_id": null,
+			"name": "Cloud Computing",
+			"_type": "Skill"
+		}, {
+			"id": "01d3385c-dfa2-4bd6-8d9e-2cb65446774c",
+			"custom_id": null,
+			"name": "Microsoft Azure",
+			"_type": "Skill"
+		}]
+	}],
+	"next": null
+}

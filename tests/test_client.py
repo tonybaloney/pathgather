@@ -108,7 +108,7 @@ def test_post_bad_request():
 def test_put_request():
     with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.put('put')
-        assert response is None
+        assert response is not None
 
 
 def test_put_bad_request():

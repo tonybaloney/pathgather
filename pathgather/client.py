@@ -98,6 +98,8 @@ class PathgatherClient(object):
             result = self.session.put("{0}/{1}".format(self.base_url, uri),
                                       json=data)
             result.raise_for_status()
+            if result.text:
+                return result.json()
         except requests.HTTPError as e:
             raise PathgatherApiException(e.response.text)
 

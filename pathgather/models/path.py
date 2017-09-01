@@ -18,14 +18,16 @@ from attr import attrs, attrib
 
 
 @attrs
-class UserSkill(object):
-    id = attrib()
-    level = attrib()
-    skill = attrib()
-
-
-@attrs
-class Skill(object):
+class Path(object):
     id = attrib()
     name = attrib()
+    created_at = attrib()
+    published = attrib()
+    publicly_accessible = attrib(default=None)
+    updated_at = attrib(default=None)
+    saved_at = attrib(default=None)
+    published_at = attrib(default=None)
     custom_id = attrib(default=None)
+    tags = attrib(default=None)
+    skills = attrib(default=None)
+    user = attrib(default=None)

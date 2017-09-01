@@ -1,0 +1,10 @@
+{
+  "id": "f5bf30a8-412c-4cea-9a64-1d4aae5a40f9",
+  "level": "Expert",
+  "_type": "UserSkill",
+  "skill": {
+    "id": "30cd791b-07fb-4c1c-8f3a-231799f86f66",
+    "name": "API Testing",
+    "_type": "Skill"
+  }
+}
