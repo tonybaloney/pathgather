@@ -2,6 +2,12 @@
 History
 =======
 
+1.0.0 (2017-09-01)
+------------------
+
+* Introduce models for all methods, created tests based on documented and real API results. 91% test coverage
+* Add support for adding skills to users, setting the skill level and deleting skills
+
 0.5.0 (2017-09-01)
 ------------------
 
