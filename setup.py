@@ -16,7 +16,8 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'PyYAML',
-    'requests'
+    'requests',
+    'attrs'
 ]
 
 test_requirements = [
