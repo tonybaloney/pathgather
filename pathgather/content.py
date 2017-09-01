@@ -14,6 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from .models.content import Content, ContentProvider
+from .utils import scrub
+
 
 class ContentClient(object):
     """ Content API. """
@@ -158,5 +161,7 @@ class ContentClient(object):
         self.client.delete('content/{0}'.format(id))
 
     def _to_content(self, data):
-        # TODO : Reflect into class model
-        return data
+        scrub(data)
+        if 'provider' in data:
+            data['provider'] = ContentProvider(**data['provider'])
+        return Content(**data)

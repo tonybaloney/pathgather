@@ -1,0 +1,34 @@
+{
+  "_type": "Content",
+  "id":"89a07305-0122-4da1-8b40-b99f4a968f88",
+  "custom_id":null,
+  "name":"ADO.NET Fundamentals",
+  "created_at": "2014-10-21T16:58:32.388-04:00", 
+  "level":"Intermediate",
+  "rating":3.0,
+  "reviews_count":1,
+  "content_type":"Course",
+  "source_url": "http://pluralsight.com/training/Courses/TableOfContents/adodotnet-fundamentals",
+  "tags":[".NET"],
+  "skills": [
+    {
+      "id": "1202a2dc-b927-27e6-a478-1a602e8aa4dc",
+      "name": ".NET"
+    }
+  ],
+  "topic": {
+    "_type": "Topic",
+    "id":"0803a3dd-a947-47e1-b488-1a707e8ab4ce",
+    "created_at": "2014-01-13T19:06:20.735-05:00",
+    "custom_id":null,
+    "name":"Computer Science"
+  },
+  "provider": {
+    "_type": "Provider",
+    "id":"cf4c840d-4a48-4ee8-8c7b-1d3e41df21b9",
+    "created_at": "2014-01-13T19:06:20.735-05:00",
+    "custom_id":null,
+    "name":"Pluralsight"
+  },
+  "enabled": true
+}
