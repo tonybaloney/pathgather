@@ -32,7 +32,7 @@ class ContentClient(object):
         :type  from_page: ``int``
 
         :return: A list of content
-        :rtype: ``list`` of ``dict``
+        :rtype: ``list`` of :class:`pathgather.models.content.Content`
         """
         params = {}
 
@@ -55,7 +55,7 @@ class ContentClient(object):
         :type  id: ``str``
 
         :return: A piece of content
-        :rtype: ``dict``
+        :rtype: :class:`pathgather.models.content.Content`
         """
         user = self.client.get('content/{0}'.format(id))
         return self._to_content(user)
@@ -123,7 +123,7 @@ class ContentClient(object):
         :type  duration: ``str``
 
         :return: A piece of content
-        :rtype: ``dict``
+        :rtype: :class:`pathgather.models.content.Content`
         """
         params = {
             'name': name,

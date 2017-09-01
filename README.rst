@@ -9,7 +9,7 @@ PathGather
         :target: https://travis-ci.org/tonybaloney/pathgather
 
 .. image:: https://readthedocs.org/projects/pathgather/badge/?version=latest
-        :target: https://readthedocs.org/projects/pathgather/?badge=latest
+        :target: http://pathgather.readthedocs.io/en/latest/
         :alt: Documentation Status
 
 .. image:: https://coveralls.io/repos/github/tonybaloney/pathgather/badge.svg?branch=master
@@ -32,6 +32,7 @@ Example
         from pathgather import PathgatherClient
         import yaml
         import json
+        from pprint import pprint
 
         with open('.tenant.yml', 'r') as tenant_yml:
            config = yaml.load(tenant_yml)
@@ -52,6 +53,11 @@ Example
                 email=user['email'])
             print(new_user)
 
+        pprint(client.users.all())
+
+        pprint(client.users.skills('362add1b-0a28-425b-a83c-40a6808fd094'))
+
+        pprint(client.paths.all())
 
 Features
 --------

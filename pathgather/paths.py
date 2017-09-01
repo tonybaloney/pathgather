@@ -37,7 +37,7 @@ class PathsClient(object):
         :type  from_page: ``int``
 
         :return: A list of paths
-        :rtype: ``list`` of ``dict``
+        :rtype: ``list`` of :class:`pathgather.models.path.Path`
         """
         params = {}
 
@@ -58,7 +58,7 @@ class PathsClient(object):
         :type  id: ``str``
 
         :return: A path
-        :rtype: ``dict``
+        :rtype: :class:`pathgather.models.path.Path`
         """
         path = self.client.get('paths/{0}'.format(id))
         return self._to_path(path)

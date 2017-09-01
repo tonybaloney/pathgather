@@ -46,8 +46,16 @@ Paths class
 Models
 ------
 
+.. module:: pathgather.models.content
+.. autoclass:: Content
+   :members:
+
 .. module:: pathgather.models.user
 .. autoclass:: User
+   :members:
+
+.. module:: pathgather.models.department
+.. autoclass:: Department
    :members:
 
 .. module:: pathgather.models.skill
@@ -56,6 +64,6 @@ Models
 .. autoclass:: Skill
    :members:
 
-.. module:: pathgather.models.department
-.. autoclass:: Department
+.. module:: pathgather.models.path
+.. autoclass:: Path
    :members:
