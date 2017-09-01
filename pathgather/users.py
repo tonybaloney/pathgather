@@ -18,6 +18,7 @@ from .utils import scrub
 from .models.user import User
 from .models.department import Department
 from .models.skill import UserSkill, Skill
+from .types import SkillLevel
 
 
 class UsersClient(object):
@@ -222,10 +223,84 @@ class UsersClient(object):
         """
         Delete a user by ID.
 
-        :param id: The identifier
+        :param id: The user ID
         :type  id: ``str``
         """
         self.client.delete('users/{0}'.format(id))
+
+    def skills(self, id):
+        """
+        Get user skills
+
+        :param id: The user ID
+        :type  id: ``str``
+        """
+        result = self.client.get('users/{0}/user_skills'.format(id))
+        scrub(result['results'])
+        return [UserSkill(**skill) for skill in result['results']]
+
+    def add_skill(self, id, skill, level=SkillLevel.ALL):
+        """
+        Add a skill to a user
+
+        :param id: The user ID
+        :type  id: ``str``
+
+        :param skill: The skill to add
+        :type  skill: :class:`pathgather.models.skill.Skill`
+
+        :param level: The skill level
+        :type  level: ``str`` or :enum:`pathgather.types.SkillLevel`
+        """
+        data = {
+            'skill_id': skill.id,
+            'level': level
+        }
+        result = self.client.post('users/{0}/user_skills'.format(id), data)
+        scrub(result)
+        return UserSkill(**result)
+
+    def add_skill_by_id(self, id, skill_id, level=SkillLevel.ALL):
+        """
+        Add a skill to a user
+
+        :param id: The user ID
+        :type  id: ``str``
+
+        :param skill_id: The skill to add
+        :type  skill_id: ``str``
+
+        :param level: The skill level
+        :type  level: ``str`` or :enum:`pathgather.types.SkillLevel`
+        """
+        data = {
+            'skill_id': skill_id,
+            'level': level
+        }
+        result = self.client.post('users/{0}/user_skills'.format(id), data)
+        scrub(result)
+        return UserSkill(**result)
+
+    def add_skill_by_name(self, id, skill_name, level=SkillLevel.ALL):
+        """
+        Add a skill to a user
+
+        :param id: The user ID
+        :type  id: ``str``
+
+        :param skill_name: The skill to add
+        :type  skill_name: ``str``
+
+        :param level: The skill level
+        :type  level: ``str`` or :enum:`pathgather.types.SkillLevel`
+        """
+        data = {
+            'skill_name': skill_name,
+            'level': level
+        }
+        result = self.client.post('users/{0}/user_skills'.format(id), data)
+        scrub(result)
+        return UserSkill(**result)
 
     def _to_user(self, data):
         scrub(data)
