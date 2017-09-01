@@ -98,7 +98,8 @@ class ContentClient(object):
         :param image: The URL to an image to display to users when viewing the content
         :type  image: ``str``
 
-        :param tags: An array of tags to associate to the content. Tags are primarily used for easy lookup later.
+        :param tags: An array of tags to associate to the content.
+         Tags are primarily used for easy lookup later.
         :type  tags: ``list`` of ``str``
 
         :param enabled: A flag representing whether this content is discoverable
@@ -111,7 +112,8 @@ class ContentClient(object):
         communicate the specific skill(s) the content will address.
         :type  skills: ``list`` of ``str``
 
-        :param duration:Set to a value that represents the amount of time needed to complete the content.
+        :param duration:Set to a value that represents the amount of time
+         needed to complete the content.
          A wide variety of inputs are accepted ('3 mins 4 sec', '2 hrs 20 min', etc).
          An error will be returned if the format is unknown. Integer values are also
          accepted and are assumed to be in seconds.
