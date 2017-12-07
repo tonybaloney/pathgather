@@ -10,7 +10,7 @@ python:
 install: "pip install -r requirements_dev.txt"
 
 # command to run tests
-script: python setup.py test
+script: python setup.py test --cov=codecov
 
 matrix:
     include:
