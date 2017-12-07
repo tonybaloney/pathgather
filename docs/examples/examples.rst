@@ -25,7 +25,7 @@ This example assumes that :
 
 This will load Podcast episodes with the description, links, tags and skills.
 
-.. figure:: /_static/images/podcast.png
+.. figure:: /_static/images/podcast.jpeg
     :align: center
 
 
