@@ -36,7 +36,6 @@ setup(
     packages=[
         'pathgather',
         'pathgather.models',
-        'pathgather.exceptions'
     ],
     package_dir={'pathgather':
                  'pathgather'},
