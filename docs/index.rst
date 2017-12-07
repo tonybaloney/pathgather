@@ -20,6 +20,7 @@ Contents:
    installation
    usage
    api
+   examples/examples
    contributing
    authors
    history
