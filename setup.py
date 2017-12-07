@@ -35,6 +35,8 @@ setup(
     url='https://github.com/tonybaloney/pathgather',
     packages=[
         'pathgather',
+        'pathgather.models',
+        'pathgather.exceptions'
     ],
     package_dir={'pathgather':
                  'pathgather'},

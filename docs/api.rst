@@ -10,9 +10,6 @@ The PathgatherClient is used to connect to the API and it offers
 .. module:: pathgather
 .. autoclass:: PathgatherClient
    :members:
-   :undoc-members:
-   :show-inheritance:
-
 
 Types
 =====
@@ -20,7 +17,6 @@ Types
 .. automodule:: pathgather.types
     :members:
     :undoc-members:
-    :show-inheritance:
 
 Accessors
 =========
