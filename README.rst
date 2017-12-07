@@ -12,9 +12,8 @@ PathGather
         :target: http://pathgather.readthedocs.io/en/latest/
         :alt: Documentation Status
 
-.. image:: https://coveralls.io/repos/github/tonybaloney/pathgather/badge.svg?branch=master
-        :target: https://coveralls.io/github/tonybaloney/pathgather?branch=master
-        :alt: Coverage Status
+.. image:: https://codecov.io/gh/tonybaloney/pathgather/branch/master/graph/badge.svg
+        :target: https://codecov.io/gh/tonybaloney/pathgather
 
 
 The Pathgather python package is for connecting to and leveraging the Pathgather REST API from Python 2 or 3.
