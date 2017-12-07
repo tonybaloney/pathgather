@@ -26,6 +26,7 @@ class PathgatherClient(object):
     """
     The main API client
     """
+
     def __init__(self, host, api_key, proxy=None,
                  skip_ssl_validation=False):
         """
@@ -39,6 +40,9 @@ class PathgatherClient(object):
 
         :param proxy: The proxy to connect through
         :type  proxy: ``str``
+
+        :param skip_ssl_validation: Skip SSL validation
+        :type  skip_ssl_validation: ``bool``
         """
         self._api_key = api_key
 
@@ -112,12 +116,27 @@ class PathgatherClient(object):
 
     @property
     def users(self):
+        """
+        Users
+
+        :rtype: :class:`pathgather.users.UserClient`
+        """
         return self._users
 
     @property
     def content(self):
+        """
+        Learning Content
+
+        :rtype: :class:`pathgather.content.ContentClient`
+        """
         return self._content
 
     @property
     def paths(self):
+        """
+        Learning Paths
+
+        :rtype: :class:`pathgather.paths.PathsClient`
+        """
         return self._paths

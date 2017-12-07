@@ -61,7 +61,8 @@ class ContentClient(object):
         return self._to_content(user)
 
     def create(self, name, content_type, source_url,
-               provider_name, topic_name, level=None, custom_id=None,
+               topic_name, provider_name=None, provider_id=None,
+               level=None, custom_id=None,
                description=None, image=None, tags=None, enabled=True,
                skills=None, duration=None):
         """
@@ -77,18 +78,21 @@ class ContentClient(object):
         :param source_url: The URL where this content can be found
         :type  source_url: ``str``
 
-        :param provider_name: Specify the name of the provider via the
-        provider_name field, or if you are using a custom_id, then please
-         set the provider_custom_id field. Provider must already exist
-        :type  provider_name: ``str``
-
         :param topic_name: Specify the name of the topic via the topic_name field,
          or if you are using a custom_id, then please set the topic_custom_id field.
          Topic must already exist.
         :type  topic_name: ``str``
 
+        :param provider_name: Specify the name of the provider via the
+         provider_name field, or if you are using a custom_id, then please
+         set the provider_id field. Provider must already exist
+        :type  provider_name: ``str``
+
+        :param provider_id: Specify the ID of the provider
+        :type  provider_id: ``str``
+
         :param level: The difficulty/experience level of the content
-        Valid values are "Beginner", "Intermediate", "Advanced", "Expert", and "All"
+         Valid values are "Beginner", "Intermediate", "Advanced", "Expert", and "All"
         :type  level: :class:`pathgather.types.SkillLevel` or ``str``
 
         :param custom_id: Optional, but highly recommended if creating content via the API
@@ -106,13 +110,13 @@ class ContentClient(object):
         :type  tags: ``list`` of ``str``
 
         :param enabled: A flag representing whether this content is discoverable
-        in your Pathgather content catalog. If false,
-        it will not show up in normal content searches.
+         in your Pathgather content catalog. If false,
+         it will not show up in normal content searches.
         :type  enabled: ``bool``
 
         :param skills: An array of skills to associate to the content.
-        Skills differ from tags, as they are displayed to the user and
-        communicate the specific skill(s) the content will address.
+         Skills differ from tags, as they are displayed to the user and
+         communicate the specific skill(s) the content will address.
         :type  skills: ``list`` of ``str``
 
         :param duration:Set to a value that represents the amount of time
@@ -129,7 +133,6 @@ class ContentClient(object):
             'name': name,
             'content_type': content_type,
             'source_url': source_url,
-            'provider_name': provider_name,
             'topic_name': topic_name,
             'enabled': enabled
         }
@@ -147,6 +150,13 @@ class ContentClient(object):
             params['skills'] = skills
         if duration:
             params['duration_str'] = duration
+        if provider_name:
+            params['provider_name'] = provider_name
+        else:
+            if provider_id:
+                params['provider_custom_id'] = provider_id
+            else:
+                raise ValueError("provider_name or provider_id required")
 
         content = self.client.post('content', {'content': params})
         return self._to_content(content)
