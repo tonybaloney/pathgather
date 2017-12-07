@@ -25,6 +25,8 @@ class Content(object):
     source_url = attrib()
     created_at = attrib()
     enabled = attrib()
+    description = attrib(default='')
+    instructor = attrib(default=None)
     skills = attrib(default=None)
     tags = attrib(default=None)
     rating = attrib(default=0)
@@ -35,6 +37,13 @@ class Content(object):
     provider = attrib(default=None)
     topic = attrib(default=None)
     custom_id = attrib(default=None)
+    start_date = attrib(default=None)
+    end_date = attrib(default=None)
+    deactivated = attrib(default=False)
+    sharer_id = attrib(default=None)
+    publicly_accessible = attrib(default=True)
+    endorsement_count = attrib(default=0)
+    sharer = attrib(default=None)
 
 
 @attrs
@@ -42,4 +51,8 @@ class ContentProvider(object):
     id = attrib()
     created_at = attrib()
     name = attrib()
+    updated_at = attrib(default=None)
+    may_require_vpn = attrib(default=False)
+    may_not_be_mobile_friendly = attrib(default=False)
+    is_subscribed = attrib(default=True)
     custom_id = attrib(default=None)

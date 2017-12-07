@@ -38,8 +38,8 @@ def test_get_content():
     with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.content.get('89a07305-0122-4da1-8b40-b99f4a968f88')
         assert response.id == '89a07305-0122-4da1-8b40-b99f4a968f88'
-        assert response.name == "ADO.NET Fundamentals"
-        assert response.provider.name == 'Pluralsight'
+        assert response.name == "Networking Basics"
+        assert response.provider.name == 'Cisco Learning Labs'
 
 def test_create_content():
     with mock_session_with_class(client.session, MockClient, TEST_URL):
@@ -53,5 +53,5 @@ def test_create_content():
             description=None, image=None, tags=None, enabled=True,
             skills=None, duration=None)
         assert response.id == '89a07305-0122-4da1-8b40-b99f4a968f88'
-        assert response.name == "ADO.NET Fundamentals"
-        assert response.provider.name == 'Pluralsight'
+        assert response.name == "Networking Basics"
+        assert response.provider.name == 'Cisco Learning Labs'
