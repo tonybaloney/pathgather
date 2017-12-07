@@ -18,7 +18,7 @@ Reading an RSS feed for a podcast and loading episodes
 This example assumes that :
  * For each feed URL you have created a Provider with the custom_id matching the Podcast name in the tuple
  * You want to tag skills for each episodes
- * You create a 
+ * You create a tenant configuration with the API key.
 
 .. literalinclude:: /examples/podcast.py
    :language: python
