@@ -28,4 +28,11 @@ This will load Podcast episodes with the description, links, tags and skills.
 .. figure:: /_static/images/podcast.png
     :align: center
 
-    A subset of supported providers in Libcloud.
+
+Scraping a JSON file on a website and linking learning content
+==============================================================
+
+This is essentially a custom provider implementation, targeting Cisco Learning Labs. 
+
+.. literalinclude:: /examples/scrape.py
+   :language: python
