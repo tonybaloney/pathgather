@@ -2,6 +2,15 @@
 History
 =======
 
+1.1.0 (2017-12-08)
+------------------
+
+* Updated content models with new fields
+* Added support to specific content provider by name or custom_id
+* Fixed doc issue with content.create
+* Added pathgather.models package to setup.py
+* Added SSL check disable flag on client and HTTP proxy settings
+
 1.0.0 (2017-09-01)
 ------------------
 
