@@ -17,7 +17,7 @@
 from .utils import scrub
 from .models.user import User
 from .models.skill import UserSkill, Skill
-from .models.gathering import Gathering
+from .models.gathering import Gathering, UserGathering
 from .types import SkillLevel
 
 
@@ -52,7 +52,7 @@ class GatheringsClient(object):
         """
         Fetch a gathering by ID.
 
-        :param id: The user id
+        :param id: The gathering id
         :type  id: ``str``
 
         :return: An instance :class:`pathgather.models.gathering.Gathering`
@@ -64,7 +64,7 @@ class GatheringsClient(object):
     def create(self, name, custom_id=None, description=None, closed=True,
                image=None, skills=None):
         """
-        Create a piece of content in the catalogue.
+        Create a gathering.
 
         :param name: Name/title of the gathering
         :type  name: ``str``
@@ -159,6 +159,27 @@ class GatheringsClient(object):
         content = self.client.put('gatherings/{0}'.format(id), {'gathering': params})
         return self._to_gathering(content)
 
+    def users(self, id, from_page=None):
+        """
+        Fetch a gathering's membership by ID.
+
+        :param id: The gathering id
+        :type  id: ``str``
+
+        :return: An instance :class:`pathgather.models.gathering.Gathering`
+        :rtype: :class:`pathgather.models.gathering.Gathering`
+        """
+        params = {}
+
+        if from_page is not None:
+            params['from'] = from_page
+
+        users = self.client.get_paged('gatherings/{0}/users'.format(id), params=params)
+        results = []
+        for page in users:
+            results.extend([self._to_user_gathering(i) for i in page['results']])
+        return results
+
     def delete(self, id):
         """
         Delete a gathering by ID.
@@ -178,3 +199,11 @@ class GatheringsClient(object):
                 _skills.append(Skill(**skill))
             data['skills'] = _skills
         return Gathering(**data)
+
+    def _to_user_gathering(self, data):
+        scrub(data)
+        if 'user' in data:
+            data['user'] = User(**data['user'])
+        if 'gathering' in data:
+            data['gathering'] = Gathering(**data['gathering'])
+        return UserGathering(**data)

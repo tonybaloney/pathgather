@@ -25,6 +25,9 @@ class MockClient(BaseMockClass):
     def _v1_gatherings_3578d16a_381a_4041_a6bb_1b3957fc8e94(self, request, method):
         return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/gatherings_3578d16a-381a-4041-a6bb-1b3957fc8e94')
 
+    def _v1_gatherings_3578d16a_381a_4041_a6bb_1b3957fc8e94_users(self, request, method):
+        return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/gatherings_users')
+
 
 def test_get_all_gatherings():
     with mock_session_with_fixtures(client.session, 'tests/fixtures', TEST_URL):
@@ -65,3 +68,11 @@ def test_delete_gathering():
     with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.gatherings.delete('3578d16a-381a-4041-a6bb-1b3957fc8e94')
         assert response is None
+
+
+def test_get_gathering_users():
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
+        response = client.gatherings.users('3578d16a-381a-4041-a6bb-1b3957fc8e94')
+        assert response[0].gathering.id == '3578d16a-381a-4041-a6bb-1b3957fc8e94'
+        assert response[0].gathering.name == "Learn to Code"
+        assert response[0].user.first_name == 'Anthony'

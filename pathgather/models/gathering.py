@@ -33,3 +33,13 @@ class Gathering(object):
     updated_at = attrib(default=None)
     user = attrib(default=None)
     skills = attrib(default=None)
+
+
+@attrs
+class UserGathering(object):
+    id = attrib()
+    created_at = attrib()
+    gathering = attrib()
+    user = attrib()
+    is_admin = attrib()
+    auto_assigned = attrib()
