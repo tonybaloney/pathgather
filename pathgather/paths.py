@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .models.path import Path
+from .models.path import Path, UserPath
 from .models.skill import Skill
 from .models.user import User
 from .utils import scrub
@@ -62,6 +62,37 @@ class PathsClient(object):
         """
         path = self.client.get('paths/{0}'.format(id))
         return self._to_path(path)
+
+    def starts_and_completions(self, from_page=None):
+        """
+        Returns objects representing a user's interaction
+        (starts and completions) with paths.
+        User path items are returned sorted by start date,
+        with the most recently started paths appearing first.
+
+        :param from_page: Get from page
+        :type  from_page: ``str``
+
+        :return: A list of path starts and completions
+        :rtype: ``list`` of :class:`pathgather.models.content.UserPath`
+        """
+        params = {}
+
+        if from_page is not None:
+            params['from'] = from_page
+
+        content = self.client.get_paged('user_paths', params=params)
+        results = []
+        for page in content:
+            results.extend([self._to_user_path(i) for i in page['results']])
+        return results
+
+    def _to_user_path(self, data):
+        scrub(data)
+        data['user'] = User(**data['user'])
+        data['path'] = Path(**data['path'])
+        data['path'].user = User(**data['path'].user)
+        return UserPath(**data)
 
     def _to_path(self, data):
         scrub(data)

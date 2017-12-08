@@ -33,3 +33,17 @@ class Path(object):
     user = attrib(default=None)
     gatherings = attrib(default=None)
     endorsement_count = attrib(default=0)
+
+
+@attrs
+class UserPath(object):
+    id = attrib()
+    public = attrib(default=False)
+    started_at = attrib(default=None)
+    created_at = attrib(default=None)
+    saved_at = attrib(default=None)
+    completed_at = attrib(default=None)
+    user = attrib(default=None)
+    path = attrib(default=None)
+    updated_at = attrib(default=None)
+    percentage = attrib(default=0)

@@ -1,0 +1,151 @@
+{
+    "results": [
+        {
+            "id": "e3904e76-2405-4a69-8e6e-40f9ac4674c7",
+            "_type": "UserPath",
+            "started_at": "2017-11-29T17:30:31.202-05:00",
+            "completed_at": null,
+            "public": true,
+            "created_at": "2017-11-29T17:30:31.214-05:00",
+            "updated_at": "2017-11-29T17:31:04.813-05:00",
+            "percentage": "0.0",
+            "saved_at": null,
+            "path": {
+                "id": "89bc4f85-f792-4b94-9fd9-a3ce9286fd55",
+                "_type": "Path",
+                "name": "Pathgather for L&D Managers",
+                "created_at": "2017-08-25T01:34:12.169-04:00",
+                "updated_at": "2017-11-29T17:30:31.240-05:00",
+                "published": true,
+                "tags": [],
+                "published_at": "2017-08-25T01:34:12.169-04:00",
+                "saved_at": "2017-09-14T14:14:00.848-04:00",
+                "publicly_accessible": false,
+                "custom_id": null,
+                "endorsement_count": 3,
+                "user": {
+                    "id": "9dbd1b62-2d6e-414a-9e4c-253d17693f09",
+                    "custom_id": null,
+                    "first_name": "Test",
+                    "last_name": "Shaw 🇦🇺",
+                    "created_at": "2017-08-24T14:20:40.990-04:00",
+                    "updated_at": "2017-12-07T21:10:17.222-05:00",
+                    "email": "testw@test.com",
+                    "job_title": "Group Director, Innovation and Technical Talent Development",
+                    "hire_date": "2012-07-31",
+                    "location": "Sydney, Australia",
+                    "deactivated": false,
+                    "last_active_at": "2017-12-07",
+                    "admin": true,
+                    "custom_fields": {},
+                    "_type": "User",
+                    "department": {
+                        "id": "2ee4445f-3350-4aa7-a985-92080aa3ecf1",
+                        "name": "Learning and Development",
+                        "_type": "Department",
+                        "created_at": "2017-08-25T00:19:03.295-04:00",
+                        "updated_at": "2017-08-25T00:19:03.295-04:00"
+                    }
+                }
+            },
+            "user": {
+                "id": "92f5063d-197d-4594-b163-8458f996dd06",
+                "custom_id": null,
+                "first_name": "Test",
+                "last_name": "Morley ⓨ",
+                "created_at": "2017-09-05T19:48:51.593-04:00",
+                "updated_at": "2017-12-01T03:38:41.867-05:00",
+                "email": "test.morley@test.com",
+                "job_title": "Technology Adoption Manager",
+                "hire_date": null,
+                "location": "UK",
+                "deactivated": false,
+                "last_active_at": "2017-12-01",
+                "admin": false,
+                "custom_fields": {},
+                "_type": "User",
+                "department": {
+                    "id": "2ee4445f-3350-4aa7-a985-92080aa3ecf1",
+                    "name": "Learning and Development",
+                    "_type": "Department",
+                    "created_at": "2017-08-25T00:19:03.295-04:00",
+                    "updated_at": "2017-08-25T00:19:03.295-04:00"
+                }
+            }
+        },
+        {
+            "id": "56ebbf69-719a-4494-9f83-6af7a9140f11",
+            "_type": "UserPath",
+            "started_at": "2017-11-23T10:47:16.180-05:00",
+            "completed_at": null,
+            "public": true,
+            "created_at": "2017-11-23T10:47:07.746-05:00",
+            "updated_at": "2017-11-23T10:47:16.230-05:00",
+            "percentage": "0.0",
+            "saved_at": "2017-11-23T10:47:07.736-05:00",
+            "path": {
+                "id": "a3b8c675-51ba-46d7-b25e-ea2e5692ae6d",
+                "_type": "Path",
+                "name": "Project Manager Learning Curriculum",
+                "created_at": "2017-09-19T07:39:18.972-04:00",
+                "updated_at": "2017-11-24T08:44:13.134-05:00",
+                "published": true,
+                "tags": [],
+                "published_at": "2017-09-19T08:45:50.089-04:00",
+                "saved_at": "2017-09-19T08:45:49.941-04:00",
+                "publicly_accessible": true,
+                "custom_id": null,
+                "endorsement_count": 1,
+                "user": {
+                    "id": "593c9d6b-8885-48cc-b488-935ea3a765ec",
+                    "custom_id": null,
+                    "first_name": "Test",
+                    "last_name": "Hugo",
+                    "created_at": "2017-08-25T00:19:16.767-04:00",
+                    "updated_at": "2017-10-10T02:22:14.069-04:00",
+                    "email": "test@test.com",
+                    "job_title": "Group Consulting Services Capability Manager",
+                    "hire_date": "2014-11-02",
+                    "location": "Cape Town, South Africa",
+                    "deactivated": false,
+                    "last_active_at": "2017-10-10",
+                    "admin": false,
+                    "custom_fields": {},
+                    "_type": "User",
+                    "department": {
+                        "id": "2ee4445f-3350-4aa7-a985-92080aa3ecf1",
+                        "name": "Learning and Development",
+                        "_type": "Department",
+                        "created_at": "2017-08-25T00:19:03.295-04:00",
+                        "updated_at": "2017-08-25T00:19:03.295-04:00"
+                    }
+                }
+            },
+            "user": {
+                "id": "9dbd1b62-2d6e-414a-9e4c-253d17693f09",
+                "custom_id": null,
+                "first_name": "Anthony",
+                "last_name": "Shaw 🇦🇺",
+                "created_at": "2017-08-24T14:20:40.990-04:00",
+                "updated_at": "2017-12-07T21:10:17.222-05:00",
+                "email": "Anthony.Shaw@test.com",
+                "job_title": "Group Director, Innovation and Technical Talent Development",
+                "hire_date": "2012-07-31",
+                "location": "Sydney, Australia",
+                "deactivated": false,
+                "last_active_at": "2017-12-07",
+                "admin": true,
+                "custom_fields": {},
+                "_type": "User",
+                "department": {
+                    "id": "2ee4445f-3350-4aa7-a985-92080aa3ecf1",
+                    "name": "Learning and Development",
+                    "_type": "Department",
+                    "created_at": "2017-08-25T00:19:03.295-04:00",
+                    "updated_at": "2017-08-25T00:19:03.295-04:00"
+                }
+            }
+        }
+    ],
+    "next": null
+}

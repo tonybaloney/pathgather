@@ -39,3 +39,12 @@ def test_get_path():
     with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.paths.get(TEST_PATH_ID)
         assert response.id == TEST_PATH_ID
+
+
+def test_get_path_completions():
+    with mock_session_with_fixtures(client.session, 'tests/fixtures', TEST_URL):
+        response = client.paths.starts_and_completions()
+        assert response[0].id == 'e3904e76-2405-4a69-8e6e-40f9ac4674c7'
+        assert response[0].path.user.first_name == 'Test'
+        assert response[0].user.last_name == 'Morley ⓨ'
+        assert response[0].path.name == 'Pathgather for L&D Managers'

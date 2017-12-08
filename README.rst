@@ -64,6 +64,7 @@ Features
 * User management
 * Content management
 * Path queries
+* User completions
 
 Credits
 ---------
