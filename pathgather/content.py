@@ -195,7 +195,8 @@ class ContentClient(object):
             results.extend([self._to_user_content(i) for i in page['results']])
         return results
 
-    def log_completion(self, content_id, completed_at='now', user_id=None, user_email=None):
+    def log_completion(self, content_id, completed_at='now',
+                       user_id=None, user_email=None):
         """
         Logs that a user completed content. Use this API to automatically update a user's
         Pathgather profile with learning activity that occurs in a different system.
@@ -210,7 +211,7 @@ class ContentClient(object):
         :param user_id: Required unless you specify user_email.
             Can be the ID assigned upon creation, or a custom ID
         :type  user_id: ``str``
-    
+
         :param user_email: Required unless you specify user_id.
             The email of the user that completed the content
         :type  user_email: ``str``
