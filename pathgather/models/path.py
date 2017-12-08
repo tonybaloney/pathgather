@@ -31,3 +31,5 @@ class Path(object):
     tags = attrib(default=None)
     skills = attrib(default=None)
     user = attrib(default=None)
+    gatherings = attrib(default=None)
+    endorsement_count = attrib(default=0)

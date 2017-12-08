@@ -14,7 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .models.content import Content, ContentProvider
+from .models.content import Content, ContentProvider, UserContent
+from .models.user import User
 from .utils import scrub
 
 
@@ -28,8 +29,8 @@ class ContentClient(object):
         """
         Get all content.
 
-        :param from_page: Filter by first name
-        :type  from_page: ``int``
+        :param from_page: Get from page
+        :type  from_page: ``str``
 
         :return: A list of content
         :rtype: ``list`` of :class:`pathgather.models.content.Content`
@@ -170,8 +171,39 @@ class ContentClient(object):
         """
         self.client.delete('content/{0}'.format(id))
 
+    def starts_and_completions(self, from_page=None):
+        """
+        Returns objects representing a user's interaction
+        (starts and completions) with content.
+        User content items are returned sorted by start date,
+        with the most recently started content appearing first.
+
+        :param from_page: Get from page
+        :type  from_page: ``str``
+
+        :return: A list of content starts and completions
+        :rtype: ``list`` of :class:`pathgather.models.content.UserContent`
+        """
+        params = {}
+
+        if from_page is not None:
+            params['from'] = from_page
+
+        content = self.client.get_paged('user_content', params=params)
+        results = []
+        for page in content:
+            results.extend([self._to_user_content(i) for i in page['results']])
+        return results
+
     def _to_content(self, data):
         scrub(data)
         if 'provider' in data:
             data['provider'] = ContentProvider(**data['provider'])
         return Content(**data)
+
+    def _to_user_content(self, data):
+        scrub(data)
+        data['user'] = User(**data['user'])
+        data['content'] = Content(**data['content'])
+        data['content'].provider = ContentProvider(**data['content'].provider)
+        return UserContent(**data)

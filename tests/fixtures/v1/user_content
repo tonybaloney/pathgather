@@ -1,0 +1,163 @@
+{
+    "results": [
+        {
+            "id": "f41f88d2-c9f0-4f5d-9dcc-c3c6c33d7e6d",
+            "_type": "UserContent",
+            "started_at": null,
+            "completed_at": "2017-12-06T08:41:04.456-05:00",
+            "public": true,
+            "created_at": "2017-12-06T08:41:04.461-05:00",
+            "updated_at": "2017-12-06T08:41:04.461-05:00",
+            "first_launched_at": null,
+            "last_launched_at": null,
+            "saved_at": null,
+            "content": {
+                "id": "0047c8bd-b78e-478b-b89f-9d162e44e557",
+                "_type": "Content",
+                "custom_id": null,
+                "name": "PathGather first 5 minutes",
+                "description": "",
+                "created_at": "2017-11-30T18:47:09.110-05:00",
+                "updated_at": "2017-11-30T18:47:09.110-05:00",
+                "level": "All",
+                "rating": 0,
+                "reviews_count": 0,
+                "content_type": "Webpage",
+                "source_url": "https://youtu.be/KWIyNh4vNYU",
+                "tags": [],
+                "instructor": null,
+                "enabled": false,
+                "start_date": null,
+                "end_date": null,
+                "deactivated": false,
+                "sharer_id": "be906c1c-0554-4ed5-8b7a-a74db23dc509",
+                "publicly_accessible": false,
+                "duration": null,
+                "endorsement_count": 1,
+                "topic": null,
+                "provider": {
+                    "id": "efda0598-75e5-426f-a57c-0b45ad50ec21",
+                    "created_at": "2017-10-29T05:45:19.365-04:00",
+                    "updated_at": "2017-10-29T05:45:19.365-04:00",
+                    "custom_id": null,
+                    "name": "youtu.be",
+                    "_type": "Provider",
+                    "may_require_vpn": false,
+                    "may_not_be_mobile_friendly": false,
+                    "is_subscribed": null
+                }
+            },
+            "user": {
+                "id": "aa89e2ad-993b-4b40-9a03-533bdbf8d359",
+                "custom_id": null,
+                "first_name": "non",
+                "last_name": "bob",
+                "created_at": "2017-10-10T05:08:38.969-04:00",
+                "updated_at": "2017-12-07T01:51:32.666-05:00",
+                "email": "bob.bob@test.com",
+                "job_title": "Learning Specialist",
+                "hire_date": null,
+                "location": "South Africa",
+                "deactivated": false,
+                "last_active_at": "2017-12-07",
+                "admin": true,
+                "custom_fields": {
+                    "Region": {
+                        "value": "Group",
+                        "display": true
+                    }
+                },
+                "_type": "User",
+                "department": {
+                    "id": "238c2119-52fc-4911-9421-bc4e0a67a172",
+                    "name": "Talent Dev & Innovation",
+                    "_type": "Department",
+                    "created_at": "2017-08-25T08:10:25.654-04:00",
+                    "updated_at": "2017-12-06T04:15:22.106-05:00"
+                }
+            }
+        },
+        {
+            "id": "dea935f8-d5ab-4739-96c7-7129a816c613",
+            "_type": "UserContent",
+            "started_at": null,
+            "completed_at": "2017-12-01T05:33:58.600-05:00",
+            "public": true,
+            "created_at": "2017-12-01T05:33:58.609-05:00",
+            "updated_at": "2017-12-01T05:33:58.609-05:00",
+            "first_launched_at": null,
+            "last_launched_at": null,
+            "saved_at": null,
+            "content": {
+                "id": "520f94a2-faec-4654-88d3-6a66a78f85d8",
+                "_type": "Content",
+                "custom_id": null,
+                "name": "People Analytics, Data and Learning: Insights from SAP’s Chief Learning Officer | Jacob Morgan",
+                "description": "<u></u><strong></strong><strong></strong>Jenny Dearborn is the Chief Learning Officer and Senior Vice President at SAP, a global software company. Dearborn leads an internationally-acclaimed and award-winning team recognized as the #1 performing corporate learning department in the world by eLearning Magazine. As global Chief Learning Officer for the 67,000 employees at SAP, Dearborn is accountable to design, align and drive SAP’s overall learning activities to enable measurable business impact. She is also an author of a new book, The Data Driven Leader.<br><br>Before SAP, Dearborn began her professional career as a high school teacher. After a brief stint in that role, she moved into education in the business world. She was Chief Learning Officer at SuccessFactors for two years where she won numerous industry awards for the measurable business impact of her sales enablement initiatives. She was at Sun Microsystems for 6 years where she was the global Chief Learning Architect across all corporate content and was the Chief Learning Officer for the Americas. Dearborn was at Hewlett-Packard for 8 years where she started as an instructor and instructional designer and progressed to executive positions as the Learning & Development leader for Global Sales & Enterprise Marketing, Global Technology Services and Global Corporate Learning Strategy.<br><br>According to Dearborn, people analytics is crucial for leaders to use the data to understand the best way to use their time. First, look at the goals you are trying to achieve. From there you identify data that you need to assess properly.<br><br>\n Suggestions for a smaller company to use data to form change: \n<ol>\n\t<li>Start by asking questions – what are your problems? What are you goals? Do you have a dashboard to see how things are going?</li>\n\t<li>Do the research. Be curious. Put data together</li>\n\t<li>Build relationships. Be ‘nonthreatening’. You need to often convince the people that have the data to be willing to share it.</li>\n</ol><br>How does a person become a human leader in a world driven by data? Data allows you to be more human. It gives you the opportunity to focus on what people truly need to make a difference in their lives or performance. If we spend our time in a variety of programs or conversations that aren’t targeted – without knowing what will make the biggest difference in their lives then we aren’t being productive.<br><br>In 5 – 10 years Dearborn believes that organizations will have more tools to support productivity, more voice triggered support systems, more voice to text in our everyday environment and there will be more robots in our lives.<br><br>\n What you will learn in this episode: \n<ul>\n\t<li>The role super heroes play in Jenny’s life</li>\n\t<li>What is the ‘coaching index’?</li>\n</ul>",
+                "created_at": "2017-12-01T05:33:58.509-05:00",
+                "updated_at": "2017-12-01T05:33:58.509-05:00",
+                "level": "All",
+                "rating": 0,
+                "reviews_count": 0,
+                "content_type": "Webpage",
+                "source_url": "https://thefutureorganization.com/people-analytics-data-learning-insights-saps-chief-learning-officer",
+                "tags": [
+                    "SAP",
+                    "People Analytics",
+                    "Statistics and Data Analysis"
+                ],
+                "instructor": null,
+                "enabled": true,
+                "start_date": null,
+                "end_date": null,
+                "deactivated": false,
+                "sharer_id": "e4a21b54-11e2-4f40-8c37-f981b7c23960",
+                "publicly_accessible": true,
+                "duration": 4320,
+                "endorsement_count": 0,
+                "topic": null,
+                "provider": {
+                    "id": "a4f8dbf6-5e75-4aae-9fff-86ce316e6687",
+                    "created_at": "2017-12-01T05:33:56.414-05:00",
+                    "updated_at": "2017-12-01T05:33:56.414-05:00",
+                    "custom_id": null,
+                    "name": "thefutureorganization.com",
+                    "_type": "Provider",
+                    "may_require_vpn": false,
+                    "may_not_be_mobile_friendly": false,
+                    "is_subscribed": null
+                }
+            },
+            "user": {
+                "id": "e4a21b54-11e2-4f40-8c37-f981b7c23960",
+                "custom_id": null,
+                "first_name": "Bob",
+                "last_name": "Hawkes",
+                "created_at": "2017-10-10T05:05:45.771-04:00",
+                "updated_at": "2017-12-07T09:55:38.408-05:00",
+                "email": "bob.hawkes@test.com",
+                "job_title": "Social Learning Guru",
+                "hire_date": "2016-10-25",
+                "location": "United Kingdom",
+                "deactivated": false,
+                "last_active_at": "2017-12-07",
+                "admin": true,
+                "custom_fields": {
+                    "Region": {
+                        "value": "Group",
+                        "display": true
+                    }
+                },
+                "_type": "User",
+                "department": {
+                    "id": "238c2119-52fc-4911-9421-bc4e0a67a172",
+                    "name": "Talent Dev & Innovation",
+                    "_type": "Department",
+                    "created_at": "2017-08-25T08:10:25.654-04:00",
+                    "updated_at": "2017-12-06T04:15:22.106-05:00"
+                }
+            }
+        }
+    ],
+    "next": null
+}

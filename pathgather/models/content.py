@@ -56,3 +56,18 @@ class ContentProvider(object):
     may_not_be_mobile_friendly = attrib(default=False)
     is_subscribed = attrib(default=True)
     custom_id = attrib(default=None)
+
+
+@attrs
+class UserContent(object):
+    id = attrib()
+    public = attrib(default=False)
+    started_at = attrib(default=None)
+    completed_at = attrib(default=None)
+    user = attrib(default=None)
+    content = attrib(default=None)
+    created_at = attrib(default=None)
+    updated_at = attrib(default=None)
+    first_launched_at = attrib(default=None)
+    last_launched_at = attrib(default=None)
+    saved_at = attrib(default=None)

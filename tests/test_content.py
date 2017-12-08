@@ -55,3 +55,11 @@ def test_create_content():
         assert response.id == '89a07305-0122-4da1-8b40-b99f4a968f88'
         assert response.name == "Networking Basics"
         assert response.provider.name == 'Cisco Learning Labs'
+
+def test_user_content():
+    with mock_session_with_fixtures(client.session, 'tests/fixtures', TEST_URL):
+        response = client.content.starts_and_completions()
+        assert response[0].id == 'f41f88d2-c9f0-4f5d-9dcc-c3c6c33d7e6d'
+        assert response[0].content.name == "PathGather first 5 minutes"
+        assert response[0].content.provider.name == 'youtu.be'
+        assert response[0].user.first_name == 'non'
