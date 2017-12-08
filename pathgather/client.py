@@ -20,6 +20,7 @@ from pathgather.exceptions import PathgatherApiException
 from .users import UsersClient
 from .content import ContentClient
 from .paths import PathsClient
+from .gatherings import GatheringsClient
 
 
 class PathgatherClient(object):
@@ -61,6 +62,7 @@ class PathgatherClient(object):
         self._users = UsersClient(self)
         self._content = ContentClient(self)
         self._paths = PathsClient(self)
+        self._gatherings = GatheringsClient(self)
 
     def get(self, uri, params=None):
         try:
@@ -140,3 +142,12 @@ class PathgatherClient(object):
         :rtype: :class:`pathgather.paths.PathsClient`
         """
         return self._paths
+
+    @property
+    def gatherings(self):
+        """
+        Learner Gatherings
+
+        :rtype: :class:`pathgather.gatherings.GatheringsClient`
+        """
+        return self._gatherings

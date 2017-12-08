@@ -1,0 +1,43 @@
+{
+    "results": [
+        {
+            "id": "3578d16a-381a-4041-a6bb-1b3957fc8e94",
+            "custom_id": null,
+            "name": "Learn to Code",
+            "description": "Learn to Code Python",
+            "closed": false,
+            "users_count": 1,
+            "courses_count": 0,
+            "paths_count": 0,
+            "image": null,
+            "conversations_count": 0,
+            "_type": "Gathering",
+            "user": {
+                "id": "9dbd1b62-2d6e-414a-9e4c-253d17693f09",
+                "custom_id": null,
+                "first_name": "Anthony",
+                "last_name": "Shaw 🇦🇺",
+                "created_at": "2017-08-24T14:20:40.990-04:00",
+                "updated_at": "2017-12-07T21:10:17.222-05:00",
+                "email": "Anthony.Shaw@test.com",
+                "job_title": "Group Director, Innovation and Technical Talent Development",
+                "hire_date": "2012-07-31",
+                "location": "Sydney, Australia",
+                "deactivated": false,
+                "last_active_at": "2017-12-07",
+                "admin": true,
+                "custom_fields": {},
+                "_type": "User"
+            },
+            "skills": [
+                {
+                    "id": "f7d2cc31-b4f7-40ef-85c9-ec3f9ca855ac",
+                    "custom_id": null,
+                    "name": "Python",
+                    "_type": "Skill"
+                }
+            ]
+        }
+    ],
+    "next": null
+}
