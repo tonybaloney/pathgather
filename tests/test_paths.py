@@ -46,5 +46,5 @@ def test_get_path_completions():
         response = client.paths.starts_and_completions()
         assert response[0].id == 'e3904e76-2405-4a69-8e6e-40f9ac4674c7'
         assert response[0].path.user.first_name == 'Test'
-        assert response[0].user.last_name == 'Morley ⓨ'
+        assert response[0].user.last_name == u'Morley ⓨ'
         assert response[0].path.name == 'Pathgather for L&D Managers'

@@ -7,6 +7,7 @@ History
 
 * Fetch content completions and starts for users
 * Register content completion for a user and a piece of content
+* Fetch path starts and completions for users
 
 1.1.0 (2017-12-08)
 ------------------
