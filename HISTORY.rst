@@ -8,6 +8,8 @@ History
 * Fetch content completions and starts for users
 * Register content completion for a user and a piece of content
 * Fetch path starts and completions for users
+* Gatherings API for listing, getting, creating, updating and deleting Gatherings
+* List users within a gathering
 
 1.1.0 (2017-12-08)
 ------------------

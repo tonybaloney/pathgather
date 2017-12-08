@@ -166,8 +166,8 @@ class GatheringsClient(object):
         :param id: The gathering id
         :type  id: ``str``
 
-        :return: An instance :class:`pathgather.models.gathering.Gathering`
-        :rtype: :class:`pathgather.models.gathering.Gathering`
+        :return: An list of :class:`pathgather.models.gathering.UserGathering`
+        :rtype: ``list`` of :class:`pathgather.models.gathering.UserGathering`
         """
         params = {}
 
@@ -179,6 +179,38 @@ class GatheringsClient(object):
         for page in users:
             results.extend([self._to_user_gathering(i) for i in page['results']])
         return results
+
+    def add_user(self, id, user_id):
+        """
+        Add a user to a gathering
+
+        :param id: The gathering id
+        :type  id: ``str``
+
+        :param user_id: The user id
+        :type  user_id: ``str``
+
+        :return: An instance :class:`pathgather.models.gathering.UserGathering`
+        :rtype: :class:`pathgather.models.gathering.UserGathering`
+        """
+        params = {
+            'gathering_id': id,
+            'gathering_user': user_id
+        }
+        content = self.client.post('gatherings/{0}/users'.format(id), params)
+        return self._to_user_gathering(content)
+
+    def remove_user(self, id, user_id):
+        """
+        Remove a user from a gathering
+
+        :param id: The gathering id
+        :type  id: ``str``
+
+        :param user_id: The user id
+        :type  user_id: ``str``
+        """
+        self.client.delete('gatherings/{0}/users/{1}'.format(id, user_id))
 
     def delete(self, id):
         """
