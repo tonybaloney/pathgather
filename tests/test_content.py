@@ -24,6 +24,10 @@ class MockClient(BaseMockClass):
     def _v1_content_89a07305_0122_4da1_8b40_b99f4a968f88(self, request, method):
         return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/content_89a07305-0122-4da1-8b40-b99f4a968f88')
 
+    def _v1_user_content(self, request, method):
+        assert method == 'POST'
+        return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/user_content_650a4eb1-eff8-4032-aef0-ee5a66ab61b1')
+
 
 client = PathgatherClient(TEST_TENANT, TEST_API_KEY)
 
@@ -63,3 +67,13 @@ def test_user_content():
         assert response[0].content.name == "PathGather first 5 minutes"
         assert response[0].content.provider.name == 'youtu.be'
         assert response[0].user.first_name == 'non'
+
+def test_log_completion():
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
+        response = client.content.log_completion(
+            content_id='650a4eb1-eff8-4032-aef0-ee5a66ab61b1',
+            user_email='test@test.com')
+        assert response.id == '650a4eb1-eff8-4032-aef0-ee5a66ab61b1'
+        assert response.content.name == "How to open and close presentations? - Presentation lesson from Mark Powell"
+        assert response.content.provider.name == 'youtube.com'
+        assert response.user.first_name == 'Anthony'

@@ -195,6 +195,44 @@ class ContentClient(object):
             results.extend([self._to_user_content(i) for i in page['results']])
         return results
 
+    def log_completion(self, content_id, completed_at='now', user_id=None, user_email=None):
+        """
+        Logs that a user completed content. Use this API to automatically update a user's
+        Pathgather profile with learning activity that occurs in a different system.
+
+        :param content_id: Can be the ID assigned upon creation, or a custom ID
+        :type  content_id: ``str``
+
+        :param completed_at: The time the content was completed by the user.
+            Must be a parseable timestamp or the word 'now'
+        :type  completed_at: ``str``
+
+        :param user_id: Required unless you specify user_email.
+            Can be the ID assigned upon creation, or a custom ID
+        :type  user_id: ``str``
+    
+        :param user_email: Required unless you specify user_id.
+            The email of the user that completed the content
+        :type  user_email: ``str``
+
+        :return: A registration of user content completion
+        :rtype: :class:`pathgather.models.content.UserContent`
+        """
+        params = {
+            'content_id': content_id,
+            'completed_at': completed_at
+        }
+        if user_id:
+            params['user_id'] = user_id
+        else:
+            if user_email:
+                params['user_email'] = user_email
+            else:
+                raise ValueError("user_email or user_id required")
+
+        content = self.client.post('user_content', params)
+        return self._to_user_content(content)
+
     def _to_content(self, data):
         scrub(data)
         if 'provider' in data:

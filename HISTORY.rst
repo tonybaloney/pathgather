@@ -2,6 +2,12 @@
 History
 =======
 
+1.2.0 (2017-12-09)
+------------------
+
+* Fetch content completions and starts for users
+* Register content completion for a user and a piece of content
+
 1.1.0 (2017-12-08)
 ------------------
 
