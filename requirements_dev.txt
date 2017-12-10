@@ -10,7 +10,7 @@ PyYAML>=3.11
 attrs==17.3.0
 codecov==2.0.10
 requests==2.18.4
-requests-staticmock
+requests-staticmock==1.4.0
 pytest
 pytest-runner
 pytest-cov
