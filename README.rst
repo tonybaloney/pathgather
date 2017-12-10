@@ -15,6 +15,13 @@ PathGather
 .. image:: https://codecov.io/gh/tonybaloney/pathgather/branch/master/graph/badge.svg
         :target: https://codecov.io/gh/tonybaloney/pathgather
 
+.. image:: https://pyup.io/repos/github/tonybaloney/pathgather/shield.svg
+     :target: https://pyup.io/repos/github/tonybaloney/pathgather/
+     :alt: Updates
+
+.. image:: https://pyup.io/repos/github/tonybaloney/pathgather/python-3-shield.svg
+     :target: https://pyup.io/repos/github/tonybaloney/pathgather/
+     :alt: Python 3
 
 The Pathgather python package is for connecting to and leveraging the Pathgather REST API from Python 2 or 3.
 
@@ -64,7 +71,18 @@ Features
 * User management
 * Content management
 * Path queries
-* User completions
+* User completions of content
+* Gathering management and gathering membership
+
+Missing
+-------
+
+The following features are in the API but not yet in this client
+
+* Gathering Content and Path management
+* Conversations
+* Comments 
+* Skills
 
 Credits
 ---------
