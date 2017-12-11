@@ -21,6 +21,7 @@ from .users import UsersClient
 from .content import ContentClient
 from .paths import PathsClient
 from .gatherings import GatheringsClient
+from .skills import SkillsClient
 
 
 class PathgatherClient(object):
@@ -63,6 +64,7 @@ class PathgatherClient(object):
         self._content = ContentClient(self)
         self._paths = PathsClient(self)
         self._gatherings = GatheringsClient(self)
+        self._skills = SkillsClient(self)
 
     def get(self, uri, params=None):
         try:
@@ -151,3 +153,12 @@ class PathgatherClient(object):
         :rtype: :class:`pathgather.gatherings.GatheringsClient`
         """
         return self._gatherings
+
+    @property
+    def skills(self):
+        """
+        Pathgather Skills
+
+        :rtype: :class:`pathgather.skills.SkillsClient`
+        """
+        return self._skills

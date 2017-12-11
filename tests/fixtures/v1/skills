@@ -1,0 +1,155 @@
+{
+    "results": [
+        {
+            "id": "5b122717-6b68-4614-889c-be1b15391891",
+            "custom_id": null,
+            "name": "data science",
+            "_type": "Skill"
+        },
+        {
+            "id": "55a33ab1-bc67-426e-a58d-e8f2041d6474",
+            "custom_id": null,
+            "name": "online course",
+            "_type": "Skill"
+        },
+        {
+            "id": "c86698cb-4d20-4843-8d98-1aa76fc84c3c",
+            "custom_id": null,
+            "name": "online",
+            "_type": "Skill"
+        },
+        {
+            "id": "4d935fd4-9907-48f6-87d7-4b8e13b522a0",
+            "custom_id": null,
+            "name": "course",
+            "_type": "Skill"
+        },
+        {
+            "id": "1ce9f10b-e922-4790-898f-09a3b6274b96",
+            "custom_id": null,
+            "name": "software developer",
+            "_type": "Skill"
+        },
+        {
+            "id": "4303c5d3-ccea-48ac-9002-50558f3522e6",
+            "custom_id": null,
+            "name": "podcast",
+            "_type": "Skill"
+        },
+        {
+            "id": "a343267d-12da-4987-8b87-77d8d6875ada",
+            "custom_id": null,
+            "name": "ide",
+            "_type": "Skill"
+        },
+        {
+            "id": "d1eb6f0f-7683-49e5-a35a-98b92ec52ead",
+            "custom_id": null,
+            "name": "developer",
+            "_type": "Skill"
+        },
+        {
+            "id": "e87610cd-06d5-49ae-86c4-72156308415f",
+            "custom_id": null,
+            "name": "software",
+            "_type": "Skill"
+        },
+        {
+            "id": "ce7d240e-1846-4dc5-8fa7-7832ca793985",
+            "custom_id": null,
+            "name": "python2",
+            "_type": "Skill"
+        },
+        {
+            "id": "9cf7aba2-4fec-4361-bce5-8ac719fe1a7b",
+            "custom_id": null,
+            "name": "python3",
+            "_type": "Skill"
+        },
+        {
+            "id": "f6e5ab2b-f9ba-4dfe-b785-20a9c1c33075",
+            "custom_id": null,
+            "name": "pycharm",
+            "_type": "Skill"
+        },
+        {
+            "id": "8cd4bd12-a938-4f47-8e8f-b7a510abdca2",
+            "custom_id": null,
+            "name": "Communication Lifecycle Management",
+            "_type": "Skill"
+        },
+        {
+            "id": "bd41e5bf-2bde-4484-b40d-a8e5212d86de",
+            "custom_id": null,
+            "name": "NexTEM",
+            "_type": "Skill"
+        },
+        {
+            "id": "799c820e-465c-4113-9d64-fc8ceef64fb8",
+            "custom_id": null,
+            "name": "NexTEM end-user",
+            "_type": "Skill"
+        },
+        {
+            "id": "bb0dceba-29f1-40f8-bf1a-ab9d250776d8",
+            "custom_id": null,
+            "name": "instructional design",
+            "_type": "Skill"
+        },
+        {
+            "id": "033e2699-962f-4e56-9fca-6babe4b7df76",
+            "custom_id": null,
+            "name": "sales management",
+            "_type": "Skill"
+        },
+        {
+            "id": "dd312cd2-df84-4141-b1e5-c3251e0f6817",
+            "custom_id": null,
+            "name": "solution selling",
+            "_type": "Skill"
+        },
+        {
+            "id": "730d59dd-44ae-46e4-b7a1-fe602a86ae82",
+            "custom_id": null,
+            "name": "People Analytics",
+            "_type": "Skill"
+        },
+        {
+            "id": "6033316f-6995-4131-9482-f220f874d384",
+            "custom_id": null,
+            "name": "SD WAN",
+            "_type": "Skill"
+        },
+        {
+            "id": "84c2161a-5b22-45b4-b63c-add917f31830",
+            "custom_id": null,
+            "name": "HR",
+            "_type": "Skill"
+        },
+        {
+            "id": "59107429-9c19-4754-9d08-595af0763dee",
+            "custom_id": null,
+            "name": "Articulate Storyline 3",
+            "_type": "Skill"
+        },
+        {
+            "id": "5c84754d-d860-4355-86e3-d339abd76832",
+            "custom_id": null,
+            "name": "E-learning design",
+            "_type": "Skill"
+        },
+        {
+            "id": "eeda3257-cd39-429a-9223-e8b6fb2bebf6",
+            "custom_id": null,
+            "name": "Virtual Classroom Facilitator",
+            "_type": "Skill"
+        },
+        {
+            "id": "f3a0d3bf-6ff6-476f-8ae6-a766d03fa7d5",
+            "custom_id": null,
+            "name": "Virtual Classroom Design",
+            "_type": "Skill"
+        }
+    ],
+    "next": null
+}
