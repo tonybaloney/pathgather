@@ -45,6 +45,21 @@ pathgather.users module
     :undoc-members:
     :show-inheritance:
 
+pathgather.gatherings module
+-----------------------
+
+.. automodule:: pathgather.gatherings
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pathgather.skills module
+-----------------------
+
+.. automodule:: pathgather.skills
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 Models
 ======
