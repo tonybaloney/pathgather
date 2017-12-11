@@ -52,6 +52,14 @@ class MockClient(BaseMockClass):
         assert method == 'DELETE'
         return StaticResponseFactory.GoodResponse(b'', request)
 
+    def _v1_gatherings_3578d16a_381a_4041_a6bb_1b3957fc8e94_paths_9dbd1b62_2d6e_414a_9e4c_253d17693f09(self, request, method):
+        assert method == 'DELETE'
+        return StaticResponseFactory.GoodResponse(b'', request)
+
+    def _v1_gatherings_3578d16a_381a_4041_a6bb_1b3957fc8e94_paths(self, request, method):
+        if method == 'GET':
+            return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/gatherings_paths')
+
 def test_get_all_gatherings():
     with mock_session_with_fixtures(client.session, 'tests/fixtures', TEST_URL):
         response = client.gatherings.all()
@@ -132,4 +140,16 @@ def test_add_gathering_content():
 def test_delete_gathering_content():
     with mock_session_with_class(client.session, MockClient, TEST_URL):
         response = client.gatherings.remove_content('3578d16a-381a-4041-a6bb-1b3957fc8e94', '9dbd1b62-2d6e-414a-9e4c-253d17693f09')
+        assert response is None
+
+def test_get_gathering_paths():
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
+        response = client.gatherings.paths('3578d16a-381a-4041-a6bb-1b3957fc8e94')
+        assert response[0].user.first_name == 'Anthony'
+        assert response[0].path.name == 'Pathgather for L&D Managers'
+        assert response[0].path.user_started_count == 16
+
+def test_delete_gathering_path():
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
+        response = client.gatherings.remove_path('3578d16a-381a-4041-a6bb-1b3957fc8e94', '9dbd1b62-2d6e-414a-9e4c-253d17693f09')
         assert response is None

@@ -17,8 +17,11 @@
 from .utils import scrub
 from .models.user import User
 from .models.skill import Skill
-from .models.gathering import Gathering, GatheringUser, GatheringContent, GatheringInvite
+from .models.gathering import (Gathering, GatheringUser,
+                               GatheringContent, GatheringInvite,
+                               GatheringPath)
 from .models.content import Content
+from .models.path import Path
 
 
 class GatheringsClient(object):
@@ -225,8 +228,8 @@ class GatheringsClient(object):
         :param id: The gathering id
         :type  id: ``str``
 
-        :return: An list of :class:`pathgather.models.gathering.UserGathering`
-        :rtype: ``list`` of :class:`pathgather.models.gathering.UserGathering`
+        :return: An list of :class:`pathgather.models.gathering.GatheringUser`
+        :rtype: ``list`` of :class:`pathgather.models.gathering.GatheringUser`
         """
         params = {}
 
@@ -275,6 +278,40 @@ class GatheringsClient(object):
         """
         self.client.delete('gatherings/{0}/contents/{1}'.format(id, content_id))
 
+    def paths(self, id, from_page=None):
+        """
+        Fetch a gathering's paths by ID.
+
+        :param id: The gathering id
+        :type  id: ``str``
+
+        :return: An list of :class:`pathgather.models.gathering.GatheringPath`
+        :rtype: ``list`` of :class:`pathgather.models.gathering.GatheringPath`
+        """
+        params = {}
+
+        if from_page is not None:
+            params['from'] = from_page
+
+        content = self.client.get_paged('gatherings/{0}/paths'.format(id), params=params)
+        results = []
+        for page in content:
+            results.extend([self._to_path_gathering(i) for i in page['results']])
+        return results
+
+    def remove_path(self, id, path_id):
+        """
+        Remove path from a gathering
+
+        :param id: The gathering id
+        :type  id: ``str``
+
+        :param path_id: The path id
+        :type  path_id: ``str``
+        """
+        self.client.delete('gatherings/{0}/paths/{1}'.format(id, path_id))
+
+
     def delete(self, id):
         """
         Delete a gathering by ID.
@@ -312,3 +349,12 @@ class GatheringsClient(object):
         if data['course'].sharer is not None:
             data['course'].sharer = User(**data['course'].sharer)
         return GatheringContent(**data)
+
+    def _to_path_gathering(self, data):
+        scrub(data)
+        if 'path' in data:
+            data['path'] = Path(**data['path'])
+        if 'user' in data:
+            data['user'] = User(**data['user'])
+
+        return GatheringPath(**data)

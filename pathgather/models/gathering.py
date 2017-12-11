@@ -59,3 +59,12 @@ class GatheringContent(object):
     created_at = attrib()
     user = attrib()
     course = attrib()
+
+
+@attrs
+class GatheringPath(object):
+    id = attrib()
+    created_at = attrib()
+    user = attrib()
+    path = attrib()
+    added_by_admin = attrib(default=False)
