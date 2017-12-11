@@ -32,6 +32,9 @@ class MockClient(BaseMockClass):
         else:
             return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/gatherings_users_single')
 
+    def _v1_gatherings_3578d16a_381a_4041_a6bb_1b3957fc8e94_gathering_invites(self, request, method):
+        return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/gatherings_invite')
+
     def _v1_gatherings_3578d16a_381a_4041_a6bb_1b3957fc8e94_contents(self, request, method):
         if method == 'GET':
             return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/gatherings_contents')
@@ -42,6 +45,12 @@ class MockClient(BaseMockClass):
         assert method == 'DELETE'
         return StaticResponseFactory.GoodResponse(b'', request)
 
+    def _v1_recommendation_to_gathering(self, request, method):
+        return self.adapter.response_from_fixture(request, 'tests/fixtures/v1/gatherings_recommendation')
+
+    def _v1_gatherings_3578d16a_381a_4041_a6bb_1b3957fc8e94_contents_9dbd1b62_2d6e_414a_9e4c_253d17693f09(self, request, method):
+        assert method == 'DELETE'
+        return StaticResponseFactory.GoodResponse(b'', request)
 
 def test_get_all_gatherings():
     with mock_session_with_fixtures(client.session, 'tests/fixtures', TEST_URL):
@@ -92,12 +101,11 @@ def test_get_gathering_users():
         assert response[0].user.first_name == 'Anthony'
 
 
-def test_get_gathering_users():
+def test_add_gathering_user():
     with mock_session_with_class(client.session, MockClient, TEST_URL):
-        response = client.gatherings.add_user('3578d16a-381a-4041-a6bb-1b3957fc8e94', '9dbd1b62-2d6e-414a-9e4c-253d17693f09')
-        assert response.gathering.id == '3578d16a-381a-4041-a6bb-1b3957fc8e94'
-        assert response.gathering.name == "Learn to Code"
-        assert response.user.first_name == 'Anthony'
+        response = client.gatherings.invite_user('3578d16a-381a-4041-a6bb-1b3957fc8e94', '9dbd1b62-2d6e-414a-9e4c-253d17693f09')
+        assert response.inviter.first_name == 'Anthony'
+        assert response.invitee.first_name == 'Lee'
 
 
 def test_delete_gathering_user():
@@ -113,3 +121,15 @@ def test_get_gathering_content():
         assert response[0].course.name == 'The Hour of Code is here'
         assert response[0].course.reviews_count == 0
         assert response[0].course.sharer.first_name == 'Anthony'
+
+
+def test_add_gathering_content():
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
+        response = client.gatherings.add_content('3578d16a-381a-4041-a6bb-1b3957fc8e94', '9dbd1b62-2d6e-414a-9e4c-253d17693f09')
+        assert response['gathering_recommendations_count'] == 1
+
+
+def test_delete_gathering_content():
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
+        response = client.gatherings.remove_content('3578d16a-381a-4041-a6bb-1b3957fc8e94', '9dbd1b62-2d6e-414a-9e4c-253d17693f09')
+        assert response is None

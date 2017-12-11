@@ -1,0 +1,63 @@
+{
+  "_type": "GatheringContent",
+  "course": {
+    "_type": "Content",
+    "content_type": "Course",
+    "created_at": "2014-05-05T00:09:37.914-04:00",
+    "custom_id": null,
+    "deactivated": false,
+    "description": "Learn the fundamentals to become a Ruby and Rails developer. You'll learn things like what Ruby is, how to write object oriented Ruby, classes and modules, programming structures and types,  and more. There are no requirements for this course other than a web browser and willingness to learn.",
+    "enabled": true,
+    "end_date": null,
+    "id": "b0201945-8d13-4188-aabe-43493728b899",
+    "instructor": {
+      "_type": null,
+      "name": "Jason Seifer"
+    },
+    "level": "Beginner",
+    "name": "Ruby Foundations",
+    "rating": 0.0,
+    "reviews_count": 0,
+    "sharer": null,
+    "sharer_id": null,
+    "source_url": "http://teamtreehouse.com/library/ruby-foundations",
+    "start_date": null,
+    "tags": [
+      "Ruby"
+    ],
+    "topic": {
+      "_type": "Topic",
+      "created_at": "2014-06-30T03:28:27.101-04:00",
+      "custom_id": null,
+      "id": "0803a3dd-a947-47e1-b488-1a707e8ab4ce",
+      "name": "Computer Science",
+      "updated_at": "2015-06-06T21:56:10.820-04:00"
+    },
+    "updated_at": "2015-04-19T17:13:28.267-04:00"
+  },
+  "created_at": "2015-08-30T18:17:46.669-04:00",
+  "id": "f6ea9a80-cc47-4712-83ea-9a306a1044c4",
+  "user": {
+    "_type": "User",
+    "admin": true,
+    "created_at": "2014-04-26T12:51:29.407-04:00",
+    "custom_id": null,
+    "deactivated": false,
+    "department": {
+      "_type": "Department",
+      "created_at": "2015-04-23T23:24:33.142-04:00",
+      "id": "75edd400-5edd-4ca8-b37b-16c82eafcd4f",
+      "name": "Stuffs",
+      "updated_at": "2015-04-23T23:24:33.142-04:00"
+    },
+    "email": "jamie@pathgather.com",
+    "first_name": "Jamie",
+    "hire_date": "2013-03-13",
+    "id": "4cea0449-666a-433f-8396-857e269449a9",
+    "job_title": "CTO",
+    "last_active_at": "2015-08-30",
+    "last_name": "Davidson",
+    "location": "New York, NY",
+    "updated_at": "2015-08-30T18:10:43.848-04:00"
+  }
+}

@@ -17,7 +17,7 @@
 from .utils import scrub
 from .models.user import User
 from .models.skill import Skill
-from .models.gathering import Gathering, GatheringUser, GatheringContent
+from .models.gathering import Gathering, GatheringUser, GatheringContent, GatheringInvite
 from .models.content import Content
 
 
@@ -180,9 +180,9 @@ class GatheringsClient(object):
             results.extend([self._to_user_gathering(i) for i in page['results']])
         return results
 
-    def add_user(self, id, user_id):
+    def invite_user(self, id, user_id):
         """
-        Add a user to a gathering
+        Invite a user to a gathering
 
         :param id: The gathering id
         :type  id: ``str``
@@ -194,11 +194,17 @@ class GatheringsClient(object):
         :rtype: :class:`pathgather.models.gathering.UserGathering`
         """
         params = {
-            'gathering_id': id,
-            'gathering_user': user_id
+            'gathering_invite': {
+                'invitee_id': user_id
+            }
         }
-        content = self.client.post('gatherings/{0}/users'.format(id), params)
-        return self._to_user_gathering(content)
+        data = self.client.post('gatherings/{0}/gathering_invites'.format(id), params)
+        scrub(data)
+        if 'inviter' in data:
+            data['inviter'] = User(**data['inviter'])
+        if 'invitee' in data:
+            data['invitee'] = User(**data['invitee'])
+        return GatheringInvite(**data)
 
     def remove_user(self, id, user_id):
         """
@@ -232,6 +238,42 @@ class GatheringsClient(object):
         for page in content:
             results.extend([self._to_content_gathering(i) for i in page['results']])
         return results
+
+    def add_content(self, id, content_id):
+        """
+        Add a piece of content to a gathering
+
+        :todo: This function does not work, cannot find a working example on the API
+
+        :param id: The gathering id
+        :type  id: ``str``
+
+        :param content_id: The content id
+        :type  content_id: ``str``
+
+        :return: A dict
+        :rtype: ``dict``
+        """
+        params = {
+            'recommendation_to_gathering': {
+                'course_id': content_id,
+                'gathering_ids': [id]
+            }
+        }
+        content = self.client.post('recommendation_to_gathering', params)
+        return content
+
+    def remove_content(self, id, content_id):
+        """
+        Remove content from a gathering
+
+        :param id: The gathering id
+        :type  id: ``str``
+
+        :param content_id: The content id
+        :type  content_id: ``str``
+        """
+        self.client.delete('gatherings/{0}/contents/{1}'.format(id, content_id))
 
     def delete(self, id):
         """
@@ -267,5 +309,6 @@ class GatheringsClient(object):
             data['course'] = Content(**data['course'])
         if 'user' in data:
             data['user'] = User(**data['user'])
-        data['course'].sharer = User(**data['course'].sharer)
+        if data['course'].sharer is not None:
+            data['course'].sharer = User(**data['course'].sharer)
         return GatheringContent(**data)

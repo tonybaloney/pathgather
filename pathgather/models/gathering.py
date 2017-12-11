@@ -36,6 +36,14 @@ class Gathering(object):
 
 
 @attrs
+class GatheringInvite(object):
+    id = attrib()
+    created_at = attrib(default=None)
+    inviter = attrib(default=None)
+    invitee = attrib(default=None)
+
+
+@attrs
 class GatheringUser(object):
     id = attrib()
     created_at = attrib()
