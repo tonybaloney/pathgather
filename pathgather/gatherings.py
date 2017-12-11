@@ -16,9 +16,9 @@
 
 from .utils import scrub
 from .models.user import User
-from .models.skill import UserSkill, Skill
-from .models.gathering import Gathering, UserGathering
-from .types import SkillLevel
+from .models.skill import Skill
+from .models.gathering import Gathering, GatheringUser, GatheringContent
+from .models.content import Content
 
 
 class GatheringsClient(object):
@@ -212,6 +212,27 @@ class GatheringsClient(object):
         """
         self.client.delete('gatherings/{0}/users/{1}'.format(id, user_id))
 
+    def content(self, id, from_page=None):
+        """
+        Fetch a gathering's content by ID.
+
+        :param id: The gathering id
+        :type  id: ``str``
+
+        :return: An list of :class:`pathgather.models.gathering.UserGathering`
+        :rtype: ``list`` of :class:`pathgather.models.gathering.UserGathering`
+        """
+        params = {}
+
+        if from_page is not None:
+            params['from'] = from_page
+
+        content = self.client.get_paged('gatherings/{0}/contents'.format(id), params=params)
+        results = []
+        for page in content:
+            results.extend([self._to_content_gathering(i) for i in page['results']])
+        return results
+
     def delete(self, id):
         """
         Delete a gathering by ID.
@@ -238,4 +259,13 @@ class GatheringsClient(object):
             data['user'] = User(**data['user'])
         if 'gathering' in data:
             data['gathering'] = Gathering(**data['gathering'])
-        return UserGathering(**data)
+        return GatheringUser(**data)
+
+    def _to_content_gathering(self, data):
+        scrub(data)
+        if 'course' in data:
+            data['course'] = Content(**data['course'])
+        if 'user' in data:
+            data['user'] = User(**data['user'])
+        data['course'].sharer = User(**data['course'].sharer)
+        return GatheringContent(**data)

@@ -36,10 +36,18 @@ class Gathering(object):
 
 
 @attrs
-class UserGathering(object):
+class GatheringUser(object):
     id = attrib()
     created_at = attrib()
     gathering = attrib()
     user = attrib()
     is_admin = attrib()
     auto_assigned = attrib()
+
+
+@attrs
+class GatheringContent(object):
+    id = attrib()
+    created_at = attrib()
+    user = attrib()
+    course = attrib()
