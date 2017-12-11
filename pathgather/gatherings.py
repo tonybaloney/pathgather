@@ -236,7 +236,8 @@ class GatheringsClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        content = self.client.get_paged('gatherings/{0}/contents'.format(id), params=params)
+        content = self.client.get_paged('gatherings/{0}/contents'.format(id), 
+                                        params=params)
         results = []
         for page in content:
             results.extend([self._to_content_gathering(i) for i in page['results']])
@@ -310,7 +311,6 @@ class GatheringsClient(object):
         :type  path_id: ``str``
         """
         self.client.delete('gatherings/{0}/paths/{1}'.format(id, path_id))
-
 
     def delete(self, id):
         """
