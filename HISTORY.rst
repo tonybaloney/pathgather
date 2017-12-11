@@ -2,6 +2,16 @@
 History
 =======
 
+1.3.0 (2017-12-11)
+------------------
+
+* Add pathgather.skills API for gathering, listing and adding skills
+* Add support to invite a user from a gathering
+* Remove `add_user` feature, since the API doesn't work
+* Add ability to list content in a gathering and delete content
+* Add support to list paths within a gathering
+* Update production path and user models
+
 1.2.0 (2017-12-09)
 ------------------
 
