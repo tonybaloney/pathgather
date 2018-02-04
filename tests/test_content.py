@@ -8,7 +8,7 @@ from requests_staticmock import (BaseMockClass,
                                  mock_session_with_class,
                                  mock_session_with_fixtures)
 from pathgather.client import PathgatherClient
-from pathgather.types import ContentType, SkillLevel
+from pathgather.types_ import ContentType, SkillLevel
 
 
 TEST_API_KEY = 'my_key_123'

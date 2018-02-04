@@ -10,7 +10,7 @@ from requests_staticmock import (BaseMockClass,
 from requests_staticmock.responses import StaticResponseFactory
 from six import b
 from pathgather.client import PathgatherClient
-from pathgather.types import SkillLevel
+from pathgather.types_ import SkillLevel
 from pathgather.models.skill import Skill, UserSkill
 
 
