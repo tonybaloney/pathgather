@@ -25,12 +25,16 @@ class ContentClient(object):
     def __init__(self, client):
         self.client = client
 
-    def all(self, from_page=None):
+    def all(self, from_page=None, query=None):
         """
         Get all content.
 
         :param from_page: Get from page
         :type  from_page: ``str``
+
+        :param query: Additional filter query
+            (see https://docs.pathgather.com/docs/filtering)
+        :type  query: ``dict``
 
         :return: A list of content
         :rtype: ``list`` of :class:`pathgather.models.content.Content`
@@ -40,7 +44,11 @@ class ContentClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        content = self.client.get_paged('content', params=params)
+        if not query:
+            content = self.client.get_paged('content', params=params)
+        else:
+            content = self.client.get_paged('content', params=params, data=query)
+
         results = []
         for page in content:
             results.extend([self._to_content(i) for i in page['results']])
