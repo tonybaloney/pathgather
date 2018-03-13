@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
+
 from .models.content import Content, ContentProvider, UserContent
 from .models.user import User
 from .utils import scrub
@@ -47,7 +49,8 @@ class ContentClient(object):
         if not query:
             content = self.client.get_paged('content', params=params)
         else:
-            content = self.client.get_paged('content', params=params, data=query)
+            data = json.dumps({"q": query})
+            content = self.client.get_paged('content', params=params, data=data)
 
         results = []
         for page in content:
