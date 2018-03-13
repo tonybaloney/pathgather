@@ -272,11 +272,8 @@ class ContentClient(object):
             params['duration_str'] = duration
         if provider_name:
             params['provider_name'] = provider_name
-        else:
-            if provider_id:
-                params['provider_custom_id'] = provider_id
-            else:
-                raise ValueError("provider_name or provider_id required")
+        if provider_id:
+            params['provider_custom_id'] = provider_id
 
         content = self.client.put('content/{0}'.format(id), {'content': params})
         return self._to_content(content)
