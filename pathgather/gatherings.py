@@ -236,7 +236,7 @@ class GatheringsClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        content = self.client.get_paged('gatherings/{0}/contents'.format(id), 
+        content = self.client.get_paged('gatherings/{0}/contents'.format(id),
                                         params=params)
         results = []
         for page in content:

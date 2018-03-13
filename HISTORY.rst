@@ -2,6 +2,12 @@
 History
 =======
 
+1.4.0 (2018-03-12)
+------------------
+
+* Add support for filtering content
+* Add support for updating a piece of content
+
 1.3.0 (2017-12-11)
 ------------------
 

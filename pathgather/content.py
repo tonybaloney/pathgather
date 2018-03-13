@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
+
 from .models.content import Content, ContentProvider, UserContent
 from .models.user import User
 from .utils import scrub
@@ -25,12 +27,16 @@ class ContentClient(object):
     def __init__(self, client):
         self.client = client
 
-    def all(self, from_page=None):
+    def all(self, from_page=None, query=None):
         """
         Get all content.
 
         :param from_page: Get from page
         :type  from_page: ``str``
+
+        :param query: Additional filter query
+            (see https://docs.pathgather.com/docs/filtering)
+        :type  query: ``dict``
 
         :return: A list of content
         :rtype: ``list`` of :class:`pathgather.models.content.Content`
@@ -40,7 +46,12 @@ class ContentClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        content = self.client.get_paged('content', params=params)
+        if not query:
+            content = self.client.get_paged('content', params=params)
+        else:
+            data = json.dumps({"q": query})
+            content = self.client.get_paged('content', params=params, data=data)
+
         results = []
         for page in content:
             results.extend([self._to_content(i) for i in page['results']])
@@ -160,6 +171,111 @@ class ContentClient(object):
                 raise ValueError("provider_name or provider_id required")
 
         content = self.client.post('content', {'content': params})
+        return self._to_content(content)
+
+    def update(self, id, name=None, content_type=None, source_url=None,
+               topic_name=None, provider_name=None, provider_id=None,
+               level=None, custom_id=None,
+               description=None, image=None, tags=None, enabled=True,
+               skills=None, duration=None):
+        """
+        Update a piece of content.
+
+        :param id: The content id
+        :type  id: ``str``
+
+        :param name: Name/title of the content
+        :type  name: ``str``
+
+        :param content_type: The type of content being referenced
+            Valid values are "Course", "Document", "Media", "Webinar", and "Webpage"
+        :type  content_type: :class:`pathgather.types.ContentType` or ``str``
+
+        :param source_url: The URL where this content can be found
+        :type  source_url: ``str``
+
+        :param topic_name: Specify the name of the topic via the topic_name field,
+         or if you are using a custom_id, then please set the topic_custom_id field.
+         Topic must already exist.
+        :type  topic_name: ``str``
+
+        :param provider_name: Specify the name of the provider via the
+         provider_name field, or if you are using a custom_id, then please
+         set the provider_id field. Provider must already exist
+        :type  provider_name: ``str``
+
+        :param provider_id: Specify the ID of the provider
+        :type  provider_id: ``str``
+
+        :param level: The difficulty/experience level of the content
+         Valid values are "Beginner", "Intermediate", "Advanced", "Expert", and "All"
+        :type  level: :class:`pathgather.types.SkillLevel` or ``str``
+
+        :param custom_id: Optional, but highly recommended if creating content via the API
+        :type  custom_id: ``str``
+
+        :param description: A description of the content to display to users
+         when viewing it. Optional, but highly recommended
+        :type  description: ``str``
+
+        :param image: The URL to an image to display to users when viewing the content
+        :type  image: ``str``
+
+        :param tags: An array of tags to associate to the content.
+         Tags are primarily used for easy lookup later.
+        :type  tags: ``list`` of ``str``
+
+        :param enabled: A flag representing whether this content is discoverable
+         in your Pathgather content catalog. If false,
+         it will not show up in normal content searches.
+        :type  enabled: ``bool``
+
+        :param skills: An array of skills to associate to the content.
+         Skills differ from tags, as they are displayed to the user and
+         communicate the specific skill(s) the content will address.
+        :type  skills: ``list`` of ``str``
+
+        :param duration:Set to a value that represents the amount of time
+         needed to complete the content.
+         A wide variety of inputs are accepted ('3 mins 4 sec', '2 hrs 20 min', etc).
+         An error will be returned if the format is unknown. Integer values are also
+         accepted and are assumed to be in seconds.
+        :type  duration: ``str``
+
+        :return: A piece of content
+        :rtype: :class:`pathgather.models.content.Content`
+        """
+        params = {}
+        if name:
+            params['name'] = name
+        if content_type:
+            params['content_type'] = content_type
+        if source_url:
+            params['source_url'] = source_url
+        if topic_name:
+            params['topic_name'] = topic_name
+        if enabled:
+            params['enabled'] = enabled
+        if level:
+            params['level'] = level
+        if custom_id:
+            params['custom_id'] = custom_id
+        if description:
+            params['description'] = description
+        if image:
+            params['image'] = image
+        if tags:
+            params['tags'] = tags
+        if skills:
+            params['skills'] = skills
+        if duration:
+            params['duration_str'] = duration
+        if provider_name:
+            params['provider_name'] = provider_name
+        if provider_id:
+            params['provider_custom_id'] = provider_id
+
+        content = self.client.put('content/{0}'.format(id), {'content': params})
         return self._to_content(content)
 
     def delete(self, id):

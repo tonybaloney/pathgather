@@ -66,22 +66,22 @@ class PathgatherClient(object):
         self._gatherings = GatheringsClient(self)
         self._skills = SkillsClient(self)
 
-    def get(self, uri, params=None):
+    def get(self, uri, params=None, data=None):
         try:
             result = self.session.get("{0}/{1}".format(self.base_url, uri),
-                                      params=params)
+                                      params=params, data=data)
             result.raise_for_status()
 
             return result.json()
         except requests.HTTPError as e:
             raise PathgatherApiException(e.response.text, uri)
 
-    def get_paged(self, uri, params=None):
+    def get_paged(self, uri, params=None, data=None):
         try:
             page = None
             end = False
             while not end:
-                result = self.get(uri, params={'from': page})
+                result = self.get(uri, params={'from': page}, data=data)
                 next_page = result['next']
                 yield result
                 if next_page:

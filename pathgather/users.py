@@ -18,7 +18,7 @@ from .utils import scrub
 from .models.user import User
 from .models.department import Department
 from .models.skill import UserSkill, Skill
-from .types import SkillLevel
+from .types_ import SkillLevel
 
 
 class UsersClient(object):

@@ -8,7 +8,7 @@ from requests_staticmock import (BaseMockClass,
                                  mock_session_with_class,
                                  mock_session_with_fixtures)
 from pathgather.client import PathgatherClient
-from pathgather.types import ContentType, SkillLevel
+from pathgather.types_ import ContentType, SkillLevel
 
 
 TEST_API_KEY = 'my_key_123'
@@ -59,6 +59,17 @@ def test_create_content():
         assert response.id == '89a07305-0122-4da1-8b40-b99f4a968f88'
         assert response.name == "Networking Basics"
         assert response.provider.name == 'Cisco Learning Labs'
+
+
+def test_update_content():
+    with mock_session_with_class(client.session, MockClient, TEST_URL):
+        response = client.content.update(
+            '89a07305-0122-4da1-8b40-b99f4a968f88',
+            description='new description')
+        assert response.id == '89a07305-0122-4da1-8b40-b99f4a968f88'
+        assert response.name == "Networking Basics"
+        assert response.provider.name == 'Cisco Learning Labs'
+
 
 def test_user_content():
     with mock_session_with_fixtures(client.session, 'tests/fixtures', TEST_URL):
