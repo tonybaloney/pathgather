@@ -27,7 +27,7 @@ test_requirements = [
 
 setup(
     name='pathgather',
-    version='1.4.0',
+    version='1.5.0',
     description="API client for PathGather",
     long_description=readme + '\n\n' + history,
     author="Anthony Shaw",
