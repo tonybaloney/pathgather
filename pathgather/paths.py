@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
+
 from .models.path import Path, UserPath
 from .models.skill import Skill
 from .models.user import User
@@ -63,7 +65,7 @@ class PathsClient(object):
         path = self.client.get('paths/{0}'.format(id))
         return self._to_path(path)
 
-    def starts_and_completions(self, from_page=None):
+    def starts_and_completions(self, from_page=None, query=None):
         """
         Returns objects representing a user's interaction
         (starts and completions) with paths.
@@ -73,6 +75,9 @@ class PathsClient(object):
         :param from_page: Get from page
         :type  from_page: ``str``
 
+        :param query: Extra query parameters
+        :param query: ``str``
+
         :return: A list of path starts and completions
         :rtype: ``list`` of :class:`pathgather.models.content.UserPath`
         """
@@ -81,7 +86,11 @@ class PathsClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        content = self.client.get_paged('user_paths', params=params)
+        data = None
+        if query is not None:
+            data = json.dumps({'q': query})
+
+        content = self.client.get_paged('user_paths', params=params, data=data)
         results = []
         for page in content:
             results.extend([self._to_user_path(i) for i in page['results']])
