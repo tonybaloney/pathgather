@@ -14,7 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import arrow
 from attr import attrs, attrib
+import attr
 
 
 @attrs
@@ -54,15 +56,15 @@ class Path(object):
     endorsement_count = attrib(default=0)
 
 
-@attrs
+@attr.s
 class UserPath(object):
     id = attrib()
-    public = attrib(default=False)
-    started_at = attrib(default=None)
-    created_at = attrib(default=None)
-    saved_at = attrib(default=None)
-    completed_at = attrib(default=None)
-    user = attrib(default=None)
-    path = attrib(default=None)
-    updated_at = attrib(default=None)
-    percentage = attrib(default=0)
+    percentage = attr.ib(converter=float)
+    started_at = attr.ib(converter=attr.converters.optional(arrow.get))
+    created_at = attr.ib(converter=attr.converters.optional(arrow.get))
+    saved_at = attr.ib(converter=attr.converters.optional(arrow.get))
+    completed_at = attr.ib(converter=attr.converters.optional(arrow.get))
+    updated_at = attr.ib(converter=attr.converters.optional(arrow.get))
+    public = attr.ib(default=False)
+    user = attr.ib(default=None)
+    path = attr.ib(default=None)
