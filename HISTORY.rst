@@ -2,6 +2,11 @@
 History
 =======
 
+1.7.0
+-----
+
+* Use arrow dates on formatted UserPath
+
 1.4.0 (2018-03-12)
 ------------------
 
