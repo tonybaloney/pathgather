@@ -27,12 +27,15 @@ class UsersClient(object):
     def __init__(self, client):
         self.client = client
 
-    def all(self, from_page=None):
+    def all(self, from_page=None, query=None):
         """
         Get all users (will page results out)
 
         :param from_page: Start at page
         :type  from_page: ``int``
+
+        :param query: Extra query parameters
+        :param query: ``dict``
 
         :return: A list of users
         :rtype: ``list`` of :class:`pathgather.models.user.User`
@@ -42,7 +45,11 @@ class UsersClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        users = self.client.get_paged('users', params=params)
+        data = None
+        if query is not None:
+            data = json.dumps({'q': query})
+
+        users = self.client.get_paged('users', params=params, data=data)
         results = []
         for page in users:
             results.extend([self._to_user(i) for i in page['results']])
@@ -60,6 +67,24 @@ class UsersClient(object):
         """
         user = self.client.get('users/{0}'.format(id))
         return self._to_user(user)
+
+    def get_by_email(self, email):
+        """
+        Get a user by email
+
+        :param email: User's email address
+        :type  email: ``str``
+
+        :return: A  users
+        :rtype: :class:`pathgather.models.user.User`
+        """
+        data = json.dumps({'q': {'email': {'eq': email}}})
+
+        users = self.client.get('users', params=None, data=data)
+        results = []
+        for page in users:
+            results.extend([self._to_user(i) for i in page['results']])
+        return results[0]
 
     def create(self, name, job_title, department,
                email, saml_id=None, custom_id=None, hire_date=None,
