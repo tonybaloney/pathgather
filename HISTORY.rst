@@ -2,6 +2,12 @@
 History
 =======
 
+1.8.0
+-----
+
+* Allow filtering of paths and users by custom query
+* Added `get_by_email` to users class
+
 1.7.0
 -----
 
