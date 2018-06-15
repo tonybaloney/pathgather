@@ -28,7 +28,7 @@ class PathsClient(object):
     def __init__(self, client):
         self.client = client
 
-    def all(self, from_page=None):
+    def all(self, from_page=None, query=None):
         """
         Get all paths.
 
@@ -38,6 +38,9 @@ class PathsClient(object):
         :param from_page: Get from page (when paginated)
         :type  from_page: ``int``
 
+        :param query: Extra query parameters
+        :param query: ``dict``
+
         :return: A list of paths
         :rtype: ``list`` of :class:`pathgather.models.path.Path`
         """
@@ -46,7 +49,11 @@ class PathsClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        paths = self.client.get_paged('paths', params=params)
+        data = None
+        if query is not None:
+            data = json.dumps({'q': query})
+
+        paths = self.client.get_paged('paths', params=params, data=data)
         results = []
         for page in paths:
             results.extend([self._to_path(i) for i in page['results']])
@@ -76,7 +83,7 @@ class PathsClient(object):
         :type  from_page: ``str``
 
         :param query: Extra query parameters
-        :param query: ``str``
+        :param query: ``dict``
 
         :return: A list of path starts and completions
         :rtype: ``list`` of :class:`pathgather.models.content.UserPath`
