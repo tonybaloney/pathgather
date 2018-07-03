@@ -68,3 +68,16 @@ class UserPath(object):
     public = attr.ib(default=False)
     user = attr.ib(default=None)
     path = attr.ib(default=None)
+
+
+@attr.s
+class PathComment(object):
+    id = attrib()
+    created_at = attr.ib(converter=attr.converters.optional(arrow.get))
+    updated_at = attr.ib(converter=attr.converters.optional(arrow.get))
+    message = attr.ib(default=None)
+    content = attr.ib(default=None)
+    conversation = attr.ib(default=None)
+    path = attr.ib(default=None)
+    custom_id = attr.ib(default=None)
+    user = attr.ib(default=None)

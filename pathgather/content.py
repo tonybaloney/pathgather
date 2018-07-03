@@ -16,7 +16,7 @@
 
 import json
 
-from .models.content import Content, ContentProvider, UserContent
+from .models.content import Content, ContentProvider, UserContent, ContentComment
 from .models.user import User
 from .utils import scrub
 
@@ -27,7 +27,7 @@ class ContentClient(object):
     def __init__(self, client):
         self.client = client
 
-    def all(self, from_page=None, query=None):
+    def all(self, from_page=None, query=None, filter=None):
         """
         Get all content.
 
@@ -38,6 +38,9 @@ class ContentClient(object):
             (see https://docs.pathgather.com/docs/filtering)
         :type  query: ``dict``
 
+        :param filter: Additional type filter, e.g. "shared", "official", "pathgather"
+        :type  filter: ``str``
+
         :return: A list of content
         :rtype: ``list`` of :class:`pathgather.models.content.Content`
         """
@@ -46,10 +49,15 @@ class ContentClient(object):
         if from_page is not None:
             params['from'] = from_page
 
-        if not query:
+        if not query and not filter:
             content = self.client.get_paged('content', params=params)
         else:
-            data = json.dumps({"q": query})
+            extra = {}
+            if query:
+                extra["q"] = query
+            if filter:
+                extra["filter"] = filter
+            data = json.dumps(extra)
             content = self.client.get_paged('content', params=params, data=data)
 
         results = []
@@ -349,6 +357,87 @@ class ContentClient(object):
 
         content = self.client.post('user_content', params)
         return self._to_user_content(content)
+
+    def get_comments(self, id, from_page=None, query=None):
+        """
+        Get comments on a content item
+    
+        :param id: The content item ID
+        :type  id: ``str``
+
+        :param from_page: Get from page
+        :type  from_page: ``str``
+
+        :param query: Extra query parameters
+        :param query: ``dict``
+
+        :return: A list of content item comments
+        :rtype: ``list`` of :class:`pathgather.models.content.ContentComment`
+        """
+        params = {}
+
+        if from_page is not None:
+            params['from'] = from_page
+
+        data = None
+        if query is not None:
+            data = json.dumps({'q': query})
+
+        content = self.client.get_paged('content/{0}/comments'.format(id), params=params, data=data)
+        results = []
+        for page in content:
+            results.extend([self._to_content_comment(i) for i in page['results']])
+        return results
+
+    def create_comment(self, id, message, user_id, custom_id=None):
+        """
+        Create a comment on a content item
+
+        :param id: The content item ID
+        :type  id: ``str``
+
+        :param message: The comment text, in plain or HTML
+        :type  message: ``str``
+
+        :param user_id: The ID of the user to create the comment as
+        :type  user_id: ``str``
+
+        :param custom_id: Custom identifier for the comment
+        :type  custom_id: ``str``
+
+        :return: A content item comment
+        :rtype: :class:`pathgather.models.content.ContentComment`
+        """
+        params = {
+            'message': message,
+            'user_id': user_id,
+        }
+        if custom_id:
+            params['custom_id'] = custom_id
+        
+
+        response = self.client.post('content/{0}/comments'.format(id), {'comment': params})
+        return self._to_content_comment(response)
+
+    def delete_comment(self, id, comment_id):
+        """
+        Delete a comment on a content item
+ 
+        :param id: The content item ID
+        :type  id: ``str``
+
+        :param comment_id: The comment ID
+        :type  comment_id: ``str``
+
+        """
+        return self.client.delete('content/{0}/comments/{1}'.format(id, comment_id))
+
+    def _to_content_comment(self, data):
+        scrub(data)
+        data['user'] = User(**data['user'])
+        if 'content' in data:
+            data['content'] = Content(**data['content'])
+        return ContentComment(**data)
 
     def _to_content(self, data):
         scrub(data)

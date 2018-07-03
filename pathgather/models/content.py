@@ -14,7 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import arrow
 from attr import attrs, attrib
+import attr
 
 
 @attrs
@@ -23,8 +25,9 @@ class Content(object):
     name = attrib()
     content_type = attrib()
     source_url = attrib()
-    created_at = attrib()
     enabled = attrib()
+
+    created_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
     description = attrib(default='')
     instructor = attrib(default=None)
     skills = attrib(default=None)
@@ -33,12 +36,12 @@ class Content(object):
     reviews_count = attrib(default=0)
     level = attrib(default=None)
     duration = attrib(default=None)
-    updated_at = attrib(default=None)
+    updated_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
     provider = attrib(default=None)
     topic = attrib(default=None)
     custom_id = attrib(default=None)
-    start_date = attrib(default=None)
-    end_date = attrib(default=None)
+    start_date = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    end_date = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
     deactivated = attrib(default=False)
     sharer_id = attrib(default=None)
     publicly_accessible = attrib(default=True)
@@ -49,9 +52,10 @@ class Content(object):
 @attrs
 class ContentProvider(object):
     id = attrib()
-    created_at = attrib()
     name = attrib()
-    updated_at = attrib(default=None)
+
+    created_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    updated_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
     may_require_vpn = attrib(default=False)
     may_not_be_mobile_friendly = attrib(default=False)
     is_subscribed = attrib(default=True)
@@ -62,12 +66,25 @@ class ContentProvider(object):
 class UserContent(object):
     id = attrib()
     public = attrib(default=False)
-    started_at = attrib(default=None)
-    completed_at = attrib(default=None)
+    started_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    completed_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
     user = attrib(default=None)
     content = attrib(default=None)
-    created_at = attrib(default=None)
-    updated_at = attrib(default=None)
-    first_launched_at = attrib(default=None)
-    last_launched_at = attrib(default=None)
-    saved_at = attrib(default=None)
+    created_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    updated_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    first_launched_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    last_launched_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    saved_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+
+
+@attr.s
+class ContentComment(object):
+    id = attrib()
+    created_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    updated_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    message = attr.ib(default=None)
+    content = attr.ib(default=None)
+    conversation = attr.ib(default=None)
+    path = attr.ib(default=None)
+    custom_id = attr.ib(default=None)
+    user = attr.ib(default=None)

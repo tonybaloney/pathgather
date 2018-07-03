@@ -16,7 +16,7 @@
 
 import json
 
-from .models.path import Path, UserPath
+from .models.path import Path, UserPath, PathComment
 from .models.skill import Skill
 from .models.user import User
 from .utils import scrub
@@ -102,6 +102,87 @@ class PathsClient(object):
         for page in content:
             results.extend([self._to_user_path(i) for i in page['results']])
         return results
+
+    def get_comments(self, id, from_page=None, query=None):
+        """
+        Get comments on a path
+    
+        :param id: The path ID
+        :type  id: ``str``
+
+        :param from_page: Get from page
+        :type  from_page: ``str``
+
+        :param query: Extra query parameters
+        :param query: ``dict``
+
+        :return: A list of path comments
+        :rtype: ``list`` of :class:`pathgather.models.path.PathComment`
+        """
+        params = {}
+
+        if from_page is not None:
+            params['from'] = from_page
+
+        data = None
+        if query is not None:
+            data = json.dumps({'q': query})
+
+        content = self.client.get_paged('paths/{0}/comments'.format(id), params=params, data=data)
+        results = []
+        for page in content:
+            results.extend([self._to_path_comment(i) for i in page['results']])
+        return results
+
+    def create_comment(self, id, message, user_id, custom_id=None):
+        """
+        Create a comment on a path
+
+        :param id: The path ID
+        :type  id: ``str``
+
+        :param message: The comment text, in plain or HTML
+        :type  message: ``str``
+
+        :param user_id: The ID of the user to create the comment as
+        :type  user_id: ``str``
+
+        :param custom_id: Custom identifier for the comment
+        :type  custom_id: ``str``
+
+        :return: A path comment
+        :rtype: :class:`pathgather.models.path.PathComment`
+        """
+        params = {
+            'message': message,
+            'user_id': user_id,
+        }
+        if custom_id:
+            params['custom_id'] = custom_id
+        
+
+        response = self.client.post('paths/{0}/comments'.format(id), {'comment': params})
+        return self._to_path_comment(response)
+
+    def delete_comment(self, id, comment_id):
+        """
+        Delete a comment on a path
+ 
+        :param id: The path ID
+        :type  id: ``str``
+
+        :param comment_id: The comment ID
+        :type  comment_id: ``str``
+
+        """
+        return self.client.delete('paths/{0}/comments/{1}'.format(id, comment_id))
+
+    def _to_path_comment(self, data):
+        scrub(data)
+        data['user'] = User(**data['user'])
+        if 'path' in data:
+            data['path'] = Path(**data['path'])
+        return PathComment(**data)
 
     def _to_user_path(self, data):
         scrub(data)

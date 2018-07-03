@@ -1,0 +1,31 @@
+{
+    "results": [
+        {
+            "id": "9eac03d0-0439-434f-98e3-bbb2f027987b",
+            "created_at": "2018-07-02T23:56:23.052-04:00",
+            "updated_at": "2018-07-02T23:56:23.052-04:00",
+            "message": "hello from bot",
+            "custom_id": null,
+            "_type": "Comment",
+            "user": {
+                "id": "ec02116b-d9c9-4f69-84a9-4cb0eb697206",
+                "custom_id": "bot_user",
+                "first_name": "DDU",
+                "last_name": "Pathways Bot",
+                "created_at": "2018-07-02T21:45:40.667-04:00",
+                "updated_at": "2018-07-02T22:56:07.592-04:00",
+                "email": "noreply@dimensiondata.com",
+                "job_title": "Helpful Bot",
+                "hire_date": null,
+                "location": null,
+                "deactivated": false,
+                "last_active_at": null,
+                "admin": false,
+                "custom_fields": {},
+                "company_admin_scope": null,
+                "_type": "User"
+            }
+        }
+    ],
+    "next": null
+}

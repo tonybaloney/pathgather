@@ -1,0 +1,277 @@
+{
+    "id": "9eac03d0-0439-434f-98e3-bbb2f027987b",
+    "created_at": "2018-07-02T23:56:23.052-04:00",
+    "updated_at": "2018-07-02T23:56:23.052-04:00",
+    "message": "hello from bot",
+    "custom_id": null,
+    "_type": "Comment",
+    "content": {
+        "id": "26e9eccc-2bc4-47e7-b7ea-39147c48b7d3",
+        "_type": "Content",
+        "custom_id": null,
+        "name": "No serial number - how we log it in ITSM / BranchTrack",
+        "description": "<p>Customer simulations made easy — we help you create better online training in sales, customer service, telemarketing and other areas. Use simulated customers to engage and motivate your learners. It has never been easier.</p>",
+        "created_at": "2018-06-14T13:50:55.290-04:00",
+        "updated_at": "2018-06-14T13:50:55.290-04:00",
+        "level": "All",
+        "rating": 0,
+        "reviews_count": 0,
+        "content_type": "Webinar",
+        "source_url": "https://www.branchtrack.com/projects/sh0okq19",
+        "tags": [],
+        "instructor": null,
+        "enabled": true,
+        "start_date": null,
+        "end_date": null,
+        "deactivated": false,
+        "sharer_id": "4bd97879-4648-4a3b-b938-9c8f73ab2d6f",
+        "publicly_accessible": true,
+        "duration": null,
+        "endorsement_count": 0,
+        "topic": null,
+        "sharer": {
+            "id": "4bd97879-4648-4a3b-b938-9c8f73ab2d6f",
+            "custom_id": "23423",
+            "first_name": "dfg",
+            "last_name": "dfgdf",
+            "created_at": "2017-08-25T00:19:15.110-04:00",
+            "updated_at": "2018-07-02T12:28:22.577-04:00",
+            "email": "sdfds@test.com",
+            "job_title": "Social Learning and Collaboration Specialist",
+            "hire_date": "555-03-01",
+            "location": "",
+            "deactivated": false,
+            "last_active_at": "2018-07-02",
+            "admin": true,
+            "custom_fields": {
+                "Region": {
+                    "value": "Group",
+                    "display": true
+                }
+            },
+            "company_admin_scope": null,
+            "_type": "User",
+            "department": {
+                "id": "de9e798f-231f-4d49-87eb-4954075177bb",
+                "name": "ZA80_2500_2523_10001101 GHO_Talent Management and Development",
+                "_type": "Department",
+                "created_at": "2018-06-10T01:48:47.699-04:00",
+                "updated_at": "2018-06-10T01:48:47.699-04:00"
+            },
+            "user_skills": [
+                {
+                    "id": "ed43f825-8ff1-464d-8f52-41fe06ffc25f",
+                    "level": "Expert",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "1afc49f5-4279-4ee4-b71a-1521da66f835",
+                        "custom_id": null,
+                        "name": "Enterprise Social Networking",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "5ff2a62b-a0ef-49f5-bfb1-a940bd6794f8",
+                    "level": "Expert",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "7c0ab1b7-45c1-4eef-8734-e2bba6575ab4",
+                        "custom_id": null,
+                        "name": "Collaboration",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "c53b427b-0c6a-4b69-8d83-601a30f355fb",
+                    "level": "Intermediate",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "87da5d7e-a2c5-4970-83c9-4a4f888e0729",
+                        "custom_id": null,
+                        "name": "Digital Workspaces",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "660b08a8-8a36-4055-b951-49fec400e9d2",
+                    "level": "Intermediate",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "4f23ca1b-2a4c-4032-9a01-7fadde1f79df",
+                        "custom_id": null,
+                        "name": "UX Design and Strategy",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "f9641544-2742-426a-8359-6f63434e36e6",
+                    "level": "Intermediate",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "8715c269-aac4-4000-b30d-ba672f5fcc82",
+                        "custom_id": null,
+                        "name": "UI Design",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "c1a80cd2-45b9-441f-91f7-20eba90d5e1f",
+                    "level": "Expert",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "e55ad050-e3fa-42b9-87ec-ed25b3090683",
+                        "custom_id": null,
+                        "name": "Creative Problem Solving",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "48fba1c8-85ea-4b55-9d7a-4c121b4a0158",
+                    "level": "Beginner",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "8bd02b4a-a08a-41ac-8e13-4fccaafeaffd",
+                        "custom_id": null,
+                        "name": "Mindfullness",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "6a899238-f749-4a0c-8be1-c84a5de9c90a",
+                    "level": "Beginner",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "a01e0932-4918-44c1-bc8f-bdd42e2afcb3",
+                        "custom_id": null,
+                        "name": "Intuituition",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "2477ca0a-b61c-4cd8-88ec-e39fec341aaf",
+                    "level": "Expert",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "480cd2b7-6f06-496c-af47-b035a97002bb",
+                        "custom_id": null,
+                        "name": "Technical Innovation",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "dbdc3abe-a03f-485b-a89e-092209418a2c",
+                    "level": "Intermediate",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "494b3163-584d-4cdf-9239-b219b07f55e6",
+                        "custom_id": null,
+                        "name": "Design Thinking",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "164fc877-46ef-402f-a926-df787e8d6f21",
+                    "level": "Expert",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "723395ed-1825-4f10-b39d-91365d35045c",
+                        "custom_id": null,
+                        "name": "Product Design",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "88a38b26-ff99-4867-806b-6e747744dadf",
+                    "level": "Intermediate",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "aa4a1418-efdf-4745-9909-fa9c41f845b0",
+                        "custom_id": null,
+                        "name": "Learning and Development",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "3249f8ce-0302-4029-bdf0-15b50858e504",
+                    "level": "Expert",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "afc491a3-38a9-459b-9986-1d884710f8c2",
+                        "custom_id": null,
+                        "name": "Community Management",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "048d6f86-90f9-43ad-9ccc-2196a4eac23d",
+                    "level": "Intermediate",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "0d74d80c-6c3d-47d9-9682-ae610ec585b9",
+                        "custom_id": null,
+                        "name": "Communications",
+                        "_type": "Skill"
+                    }
+                },
+                {
+                    "id": "97d86fd9-35e5-4360-ab87-b33579257cdb",
+                    "level": "Intermediate",
+                    "_type": "UserSkill",
+                    "skill": {
+                        "id": "9b43c65f-abab-4fe8-82d9-d078920c933e",
+                        "custom_id": null,
+                        "name": "Critical Thinking",
+                        "_type": "Skill"
+                    }
+                }
+            ]
+        },
+        "provider": {
+            "id": "d08c321a-7fbf-4321-9b1e-f42294c0927b",
+            "created_at": "2018-06-14T13:50:55.239-04:00",
+            "updated_at": "2018-06-14T13:50:55.239-04:00",
+            "custom_id": null,
+            "name": "branchtrack.com",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": null
+        },
+        "skills": [
+            {
+                "id": "49ecf8d2-f8ef-4584-9c79-35b44004cfd2",
+                "custom_id": null,
+                "name": "Servicedesk",
+                "_type": "Skill"
+            }
+        ]
+    },
+    "user": {
+        "id": "ec02116b-d9c9-4f69-84a9-4cb0eb697206",
+        "custom_id": "bot_user",
+        "first_name": "DDU",
+        "last_name": "Pathways Bot",
+        "created_at": "2018-07-02T21:45:40.667-04:00",
+        "updated_at": "2018-07-02T22:56:07.592-04:00",
+        "email": "noreply@dimensiondata.com",
+        "job_title": "Helpful Bot",
+        "hire_date": null,
+        "location": null,
+        "deactivated": false,
+        "last_active_at": null,
+        "admin": false,
+        "custom_fields": {},
+        "company_admin_scope": null,
+        "_type": "User",
+        "department": {
+            "id": "2ee4445f-3350-4aa7-a985-92080aa3ecf1",
+            "name": "Learning and Development",
+            "_type": "Department",
+            "created_at": "2017-08-25T00:19:03.295-04:00",
+            "updated_at": "2017-08-25T00:19:03.295-04:00"
+        },
+        "user_skills": []
+    },
+    "conversation": null,
+    "path": null
+}
