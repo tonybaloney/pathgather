@@ -14,11 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
+
 from .utils import scrub
 from .models.user import User
 from .models.department import Department
 from .models.skill import UserSkill, Skill
 from .types_ import SkillLevel
+from .exceptions import UserNotFoundException
 
 
 class UsersClient(object):
@@ -81,10 +84,9 @@ class UsersClient(object):
         data = json.dumps({'q': {'email': {'eq': email}}})
 
         users = self.client.get('users', params=None, data=data)
-        results = []
-        for page in users:
-            results.extend([self._to_user(i) for i in page['results']])
-        return results[0]
+        if len(users['results']) == 0:
+            raise UserNotFoundException("Could not find user {0}".format(email), 'users')
+        return self._to_user(users['results'][0])
 
     def create(self, name, job_title, department,
                email, saml_id=None, custom_id=None, hire_date=None,
