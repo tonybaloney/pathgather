@@ -2,8 +2,8 @@
 History
 =======
 
-master
-------
+1.9.0
+-----
 
 * Added support for comments on paths, creating and listing comments. Delete comment added but API returns 404.
 * Added support for comments on content
