@@ -2,6 +2,11 @@
 History
 =======
 
+1.10.0
+------
+
+* Set default of 50 max results per page, configurable via client object.
+
 1.9.0
 -----
 

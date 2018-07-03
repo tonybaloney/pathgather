@@ -29,6 +29,11 @@ class PathgatherClient(object):
     The main API client
     """
 
+    """
+    Set the default results per page. Max 100
+    """
+    results_per_page = 50
+
     def __init__(self, host, api_key, proxy=None, skip_ssl_validation=False):
         """
         Instantiate a new API client
@@ -70,6 +75,11 @@ class PathgatherClient(object):
 
     def get(self, uri, params=None, data=None):
         try:
+            if params:
+                if 'per_page' not in params:
+                    params['per_page'] = self.results_per_page
+            else:
+                params = {'per_page': self.results_per_page}
             result = self.session.get(
                 "{0}/{1}".format(self.base_url, uri), params=params, data=data
             )
