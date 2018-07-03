@@ -46,16 +46,16 @@ class UsersClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
         data = None
         if query is not None:
-            data = json.dumps({'q': query})
+            data = json.dumps({"q": query})
 
-        users = self.client.get_paged('users', params=params, data=data)
+        users = self.client.get_paged("users", params=params, data=data)
         results = []
         for page in users:
-            results.extend([self._to_user(i) for i in page['results']])
+            results.extend([self._to_user(i) for i in page["results"]])
         return results
 
     def get(self, id):
@@ -68,7 +68,7 @@ class UsersClient(object):
         :return: An instance :class:`pathgather.models.user.User`
         :rtype: :class:`pathgather.models.user.User`
         """
-        user = self.client.get('users/{0}'.format(id))
+        user = self.client.get("users/{0}".format(id))
         return self._to_user(user)
 
     def get_by_email(self, email):
@@ -81,17 +81,31 @@ class UsersClient(object):
         :return: A  users
         :rtype: :class:`pathgather.models.user.User`
         """
-        data = json.dumps({'q': {'email': {'eq': email}}})
+        data = json.dumps({"q": {"email": {"eq": email}}})
 
-        users = self.client.get('users', params=None, data=data)
-        if len(users['results']) == 0:
-            raise UserNotFoundException("Could not find user {0}".format(email), 'users')
-        return self._to_user(users['results'][0])
+        users = self.client.get("users", params=None, data=data)
+        if len(users["results"]) == 0:
+            raise UserNotFoundException(
+                "Could not find user {0}".format(email), "users"
+            )
+        return self._to_user(users["results"][0])
 
-    def create(self, name, job_title, department,
-               email, saml_id=None, custom_id=None, hire_date=None,
-               location='', avatar='', admin=False, send_invite=True,
-               deactivated=False, custom_fields=None):
+    def create(
+        self,
+        name,
+        job_title,
+        department,
+        email,
+        saml_id=None,
+        custom_id=None,
+        hire_date=None,
+        location="",
+        avatar="",
+        admin=False,
+        send_invite=True,
+        deactivated=False,
+        custom_fields=None,
+    ):
         """
         Create a user.
 
@@ -141,34 +155,46 @@ class UsersClient(object):
         :rtype: :class:`pathgather.models.user.User`
         """
         params = {
-            'name': name,
-            'job_title': job_title,
-            'department': department,
-            'email': email,
-            'admin': admin,
-            'send_invite': send_invite,
-            'deactivated': deactivated
+            "name": name,
+            "job_title": job_title,
+            "department": department,
+            "email": email,
+            "admin": admin,
+            "send_invite": send_invite,
+            "deactivated": deactivated,
         }
         if saml_id:
-            params['saml_id'] = saml_id
+            params["saml_id"] = saml_id
         if custom_id:
-            params['custom_id'] = custom_id
+            params["custom_id"] = custom_id
         if hire_date:
-            params['hire_date'] = hire_date
+            params["hire_date"] = hire_date
         if location:
-            params['location'] = location
+            params["location"] = location
         if avatar:
-            params['avatar'] = avatar
+            params["avatar"] = avatar
         if custom_fields:
-            params['custom_fields'] = custom_fields
+            params["custom_fields"] = custom_fields
 
-        user = self.client.post('users', {'user': params})
+        user = self.client.post("users", {"user": params})
         return self._to_user(user)
 
-    def update(self, id, name=None, job_title=None, department=None,
-               email=None, saml_id=None, custom_id=None, hire_date=None,
-               location=None, avatar=None, admin=None,
-               deactivated=None, custom_fields=None):
+    def update(
+        self,
+        id,
+        name=None,
+        job_title=None,
+        department=None,
+        email=None,
+        saml_id=None,
+        custom_id=None,
+        hire_date=None,
+        location=None,
+        avatar=None,
+        admin=None,
+        deactivated=None,
+        custom_fields=None,
+    ):
         """
         Update a user.
 
@@ -219,31 +245,31 @@ class UsersClient(object):
         """
         params = {}
         if name:
-            params['name'] = name
+            params["name"] = name
         if job_title:
-            params['job_title'] = job_title
+            params["job_title"] = job_title
         if department:
-            params['department'] = department
+            params["department"] = department
         if email:
-            params['email'] = email
+            params["email"] = email
         if admin is not None:
-            params['admin'] = admin
+            params["admin"] = admin
         if deactivated is not None:
-            params['deactivated'] = deactivated
+            params["deactivated"] = deactivated
         if saml_id:
-            params['saml_id'] = saml_id
+            params["saml_id"] = saml_id
         if custom_id:
-            params['custom_id'] = custom_id
+            params["custom_id"] = custom_id
         if hire_date:
-            params['hire_date'] = hire_date
+            params["hire_date"] = hire_date
         if location:
-            params['location'] = location
+            params["location"] = location
         if avatar:
-            params['avatar'] = avatar
+            params["avatar"] = avatar
         if custom_fields:
-            params['custom_fields'] = custom_fields
+            params["custom_fields"] = custom_fields
 
-        user = self.client.put('users/{0}'.format(id), {'user': params})
+        user = self.client.put("users/{0}".format(id), {"user": params})
         return self._to_user(user)
 
     def delete(self, id):
@@ -253,7 +279,7 @@ class UsersClient(object):
         :param id: The user ID
         :type  id: ``str``
         """
-        self.client.delete('users/{0}'.format(id))
+        self.client.delete("users/{0}".format(id))
 
     def skills(self, id):
         """
@@ -265,11 +291,11 @@ class UsersClient(object):
         :return: the skills for this user
         :rtype: ``list`` :class:`pathgather.models.skill.UserSkill`
         """
-        result = self.client.get('users/{0}/user_skills'.format(id))
-        scrub(result['results'])
+        result = self.client.get("users/{0}/user_skills".format(id))
+        scrub(result["results"])
         _skills = []
-        for skill in result['results']:
-            skill['skill'] = Skill(**skill['skill'])
+        for skill in result["results"]:
+            skill["skill"] = Skill(**skill["skill"])
             _skills.append(UserSkill(**skill))
         return _skills
 
@@ -289,11 +315,8 @@ class UsersClient(object):
         :return: Instance of :class:`pathgather.models.skill.UserSkill`
         :rtype: :class:`pathgather.models.skill.UserSkill`
         """
-        data = {
-            'skill_id': skill.id,
-            'level': level
-        }
-        result = self.client.post('users/{0}/user_skills'.format(id), data)
+        data = {"skill_id": skill.id, "level": level}
+        result = self.client.post("users/{0}/user_skills".format(id), data)
         scrub(result)
         return UserSkill(**result)
 
@@ -313,11 +336,8 @@ class UsersClient(object):
         :return: Instance of :class:`pathgather.models.skill.UserSkill`
         :rtype: :class:`pathgather.models.skill.UserSkill`
         """
-        data = {
-            'skill_id': skill_id,
-            'level': level
-        }
-        result = self.client.post('users/{0}/user_skills'.format(id), data)
+        data = {"skill_id": skill_id, "level": level}
+        result = self.client.post("users/{0}/user_skills".format(id), data)
         scrub(result)
         return UserSkill(**result)
 
@@ -337,11 +357,8 @@ class UsersClient(object):
         :return: Instance of :class:`pathgather.models.skill.UserSkill`
         :rtype: :class:`pathgather.models.skill.UserSkill`
         """
-        data = {
-            'skill_name': skill_name,
-            'level': level
-        }
-        result = self.client.post('users/{0}/user_skills'.format(id), data)
+        data = {"skill_name": skill_name, "level": level}
+        result = self.client.post("users/{0}/user_skills".format(id), data)
         scrub(result)
         return UserSkill(**result)
 
@@ -361,11 +378,8 @@ class UsersClient(object):
         :return: Instance of :class:`pathgather.models.skill.UserSkill`
         :rtype: :class:`pathgather.models.skill.UserSkill`
         """
-        data = {
-            'skill_id': skill.id,
-            'level': level
-        }
-        result = self.client.post('users/{0}/user_skills'.format(id), data)
+        data = {"skill_id": skill.id, "level": level}
+        result = self.client.post("users/{0}/user_skills".format(id), data)
         scrub(result)
         return UserSkill(**result)
 
@@ -381,16 +395,16 @@ class UsersClient(object):
         """
         if isinstance(user_skill, UserSkill):
             user_skill = user_skill.id
-        self.client.delete('users/{0}/user_skills/{1}'.format(id, user_skill))
+        self.client.delete("users/{0}/user_skills/{1}".format(id, user_skill))
 
     def _to_user(self, data):
         scrub(data)
-        if 'department' in data:
-            data['department'] = Department(**data['department'])
-        if 'user_skills' in data:
+        if "department" in data:
+            data["department"] = Department(**data["department"])
+        if "user_skills" in data:
             _skills = []
-            for skill in data['user_skills']:
-                skill['skill'] = Skill(**skill['skill'])
+            for skill in data["user_skills"]:
+                skill["skill"] = Skill(**skill["skill"])
                 _skills.append(UserSkill(**skill))
-            data['user_skills'] = _skills
+            data["user_skills"] = _skills
         return User(**data)

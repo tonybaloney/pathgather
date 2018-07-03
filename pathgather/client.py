@@ -29,8 +29,7 @@ class PathgatherClient(object):
     The main API client
     """
 
-    def __init__(self, host, api_key, proxy=None,
-                 skip_ssl_validation=False):
+    def __init__(self, host, api_key, proxy=None, skip_ssl_validation=False):
         """
         Instantiate a new API client
 
@@ -48,17 +47,20 @@ class PathgatherClient(object):
         """
         self._api_key = api_key
 
-        self.base_url = 'https://{0}/v1'.format(host)
+        self.base_url = "https://{0}/v1".format(host)
 
         self.session = requests.Session()
         if proxy:
-            self.session.proxies = {'https': proxy}
+            self.session.proxies = {"https": proxy}
         if skip_ssl_validation:
             self.session.verify = False
         self.session.headers.update(
-            {'Accept': 'application/json',
-             'Content-Type': 'application/json',
-             'Authorization': "Bearer {0}".format(api_key)})
+            {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer {0}".format(api_key),
+            }
+        )
 
         self._users = UsersClient(self)
         self._content = ContentClient(self)
@@ -68,8 +70,9 @@ class PathgatherClient(object):
 
     def get(self, uri, params=None, data=None):
         try:
-            result = self.session.get("{0}/{1}".format(self.base_url, uri),
-                                      params=params, data=data)
+            result = self.session.get(
+                "{0}/{1}".format(self.base_url, uri), params=params, data=data
+            )
             result.raise_for_status()
 
             return result.json()
@@ -81,8 +84,8 @@ class PathgatherClient(object):
             page = None
             end = False
             while not end:
-                result = self.get(uri, params={'from': page}, data=data)
-                next_page = result['next']
+                result = self.get(uri, params={"from": page}, data=data)
+                next_page = result["next"]
                 yield result
                 if next_page:
                     page = next_page
@@ -93,8 +96,7 @@ class PathgatherClient(object):
 
     def post(self, uri, data=None):
         try:
-            result = self.session.post("{0}/{1}".format(self.base_url, uri),
-                                       json=data)
+            result = self.session.post("{0}/{1}".format(self.base_url, uri), json=data)
             result.raise_for_status()
 
             return result.json()
@@ -103,8 +105,7 @@ class PathgatherClient(object):
 
     def put(self, uri, data=None):
         try:
-            result = self.session.put("{0}/{1}".format(self.base_url, uri),
-                                      json=data)
+            result = self.session.put("{0}/{1}".format(self.base_url, uri), json=data)
             result.raise_for_status()
             if result.text:
                 return result.json()

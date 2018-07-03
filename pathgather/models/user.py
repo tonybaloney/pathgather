@@ -28,7 +28,7 @@ class User(object):
     deactivated = attrib()
     admin = attrib(default=None)
     name = attrib(default=None)
-    description = attrib(default='')
+    description = attrib(default="")
     avatar = attrib(default=None)
     url = attrib(default=None)
     job_function = attrib(default=None)

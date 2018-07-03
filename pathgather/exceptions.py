@@ -20,7 +20,7 @@ class PathgatherApiException(Exception):
         self.message = message
         self.uri = uri
         if self.uri:
-            self.message += '({0})'.format(uri)
+            self.message += "({0})".format(uri)
 
 
 class UserNotFoundException(PathgatherApiException):

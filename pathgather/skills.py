@@ -37,12 +37,12 @@ class SkillsClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
-        users = self.client.get_paged('skills', params=params)
+        users = self.client.get_paged("skills", params=params)
         results = []
         for page in users:
-            results.extend([self._to_skill(i) for i in page['results']])
+            results.extend([self._to_skill(i) for i in page["results"]])
         return results
 
     def get(self, id):
@@ -55,7 +55,7 @@ class SkillsClient(object):
         :return: An instance :class:`pathgather.models.skill.Skill`
         :rtype: :class:`pathgather.models.skill.Skill`
         """
-        user = self.client.get('skills/{0}'.format(id))
+        user = self.client.get("skills/{0}".format(id))
         return self._to_skill(user)
 
     def create(self, name, custom_id=None):
@@ -71,14 +71,12 @@ class SkillsClient(object):
         :return: An instance :class:`pathgather.models.skill.Skill`
         :rtype: :class:`pathgather.models.skill.Skill`
         """
-        params = {
-            'name': name
-        }
+        params = {"name": name}
 
         if custom_id:
-            params['custom_id'] = custom_id
+            params["custom_id"] = custom_id
 
-        user = self.client.post('skills', {'skill': params})
+        user = self.client.post("skills", {"skill": params})
         return self._to_skill(user)
 
     def update(self, id, name=None, custom_id=None):
@@ -99,11 +97,11 @@ class SkillsClient(object):
         """
         params = {}
         if name:
-            params['name'] = name
+            params["name"] = name
         if custom_id:
-            params['custom_id'] = custom_id
+            params["custom_id"] = custom_id
 
-        user = self.client.put('skills/{0}'.format(id), {'user': params})
+        user = self.client.put("skills/{0}".format(id), {"user": params})
         return self._to_skill(user)
 
     def delete(self, id):
@@ -113,7 +111,7 @@ class SkillsClient(object):
         :param id: The skill ID
         :type  id: ``str``
         """
-        self.client.delete('skills/{0}'.format(id))
+        self.client.delete("skills/{0}".format(id))
 
     def _to_skill(self, data):
         scrub(data)

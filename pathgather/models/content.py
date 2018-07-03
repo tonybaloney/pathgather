@@ -28,7 +28,7 @@ class Content(object):
     enabled = attrib()
 
     created_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
-    description = attrib(default='')
+    description = attrib(default="")
     instructor = attrib(default=None)
     skills = attrib(default=None)
     tags = attrib(default=None)
@@ -72,8 +72,12 @@ class UserContent(object):
     content = attrib(default=None)
     created_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
     updated_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
-    first_launched_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
-    last_launched_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
+    first_launched_at = attr.ib(
+        converter=attr.converters.optional(arrow.get), default=None
+    )
+    last_launched_at = attr.ib(
+        converter=attr.converters.optional(arrow.get), default=None
+    )
     saved_at = attr.ib(converter=attr.converters.optional(arrow.get), default=None)
 
 

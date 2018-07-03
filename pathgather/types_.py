@@ -18,11 +18,11 @@ from __future__ import absolute_import
 
 
 class ContentType(object):
-    COURSE = 'Course'
-    DOCUMENT = 'Document'
-    MEDIA = 'Media'
-    WEBINAR = 'Webinar'
-    WEBPAGE = 'Webpage'
+    COURSE = "Course"
+    DOCUMENT = "Document"
+    MEDIA = "Media"
+    WEBINAR = "Webinar"
+    WEBPAGE = "Webpage"
 
 
 class SkillLevel(object):

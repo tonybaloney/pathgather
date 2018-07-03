@@ -47,10 +47,10 @@ class ContentClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
         if not query and not filter:
-            content = self.client.get_paged('content', params=params)
+            content = self.client.get_paged("content", params=params)
         else:
             extra = {}
             if query:
@@ -58,11 +58,11 @@ class ContentClient(object):
             if filter:
                 extra["filter"] = filter
             data = json.dumps(extra)
-            content = self.client.get_paged('content', params=params, data=data)
+            content = self.client.get_paged("content", params=params, data=data)
 
         results = []
         for page in content:
-            results.extend([self._to_content(i) for i in page['results']])
+            results.extend([self._to_content(i) for i in page["results"]])
         return results
 
     def get(self, id):
@@ -77,14 +77,26 @@ class ContentClient(object):
         :return: A piece of content
         :rtype: :class:`pathgather.models.content.Content`
         """
-        user = self.client.get('content/{0}'.format(id))
+        user = self.client.get("content/{0}".format(id))
         return self._to_content(user)
 
-    def create(self, name, content_type, source_url,
-               topic_name, provider_name=None, provider_id=None,
-               level=None, custom_id=None,
-               description=None, image=None, tags=None, enabled=True,
-               skills=None, duration=None):
+    def create(
+        self,
+        name,
+        content_type,
+        source_url,
+        topic_name,
+        provider_name=None,
+        provider_id=None,
+        level=None,
+        custom_id=None,
+        description=None,
+        image=None,
+        tags=None,
+        enabled=True,
+        skills=None,
+        duration=None,
+    ):
         """
         Create a piece of content in the catalogue.
 
@@ -150,42 +162,55 @@ class ContentClient(object):
         :rtype: :class:`pathgather.models.content.Content`
         """
         params = {
-            'name': name,
-            'content_type': content_type,
-            'source_url': source_url,
-            'topic_name': topic_name,
-            'enabled': enabled
+            "name": name,
+            "content_type": content_type,
+            "source_url": source_url,
+            "topic_name": topic_name,
+            "enabled": enabled,
         }
         if level:
-            params['level'] = level
+            params["level"] = level
         if custom_id:
-            params['custom_id'] = custom_id
+            params["custom_id"] = custom_id
         if description:
-            params['description'] = description
+            params["description"] = description
         if image:
-            params['image'] = image
+            params["image"] = image
         if tags:
-            params['tags'] = tags
+            params["tags"] = tags
         if skills:
-            params['skills'] = skills
+            params["skills"] = skills
         if duration:
-            params['duration_str'] = duration
+            params["duration_str"] = duration
         if provider_name:
-            params['provider_name'] = provider_name
+            params["provider_name"] = provider_name
         else:
             if provider_id:
-                params['provider_custom_id'] = provider_id
+                params["provider_custom_id"] = provider_id
             else:
                 raise ValueError("provider_name or provider_id required")
 
-        content = self.client.post('content', {'content': params})
+        content = self.client.post("content", {"content": params})
         return self._to_content(content)
 
-    def update(self, id, name=None, content_type=None, source_url=None,
-               topic_name=None, provider_name=None, provider_id=None,
-               level=None, custom_id=None,
-               description=None, image=None, tags=None, enabled=True,
-               skills=None, duration=None):
+    def update(
+        self,
+        id,
+        name=None,
+        content_type=None,
+        source_url=None,
+        topic_name=None,
+        provider_name=None,
+        provider_id=None,
+        level=None,
+        custom_id=None,
+        description=None,
+        image=None,
+        tags=None,
+        enabled=True,
+        skills=None,
+        duration=None,
+    ):
         """
         Update a piece of content.
 
@@ -255,35 +280,35 @@ class ContentClient(object):
         """
         params = {}
         if name:
-            params['name'] = name
+            params["name"] = name
         if content_type:
-            params['content_type'] = content_type
+            params["content_type"] = content_type
         if source_url:
-            params['source_url'] = source_url
+            params["source_url"] = source_url
         if topic_name:
-            params['topic_name'] = topic_name
+            params["topic_name"] = topic_name
         if enabled:
-            params['enabled'] = enabled
+            params["enabled"] = enabled
         if level:
-            params['level'] = level
+            params["level"] = level
         if custom_id:
-            params['custom_id'] = custom_id
+            params["custom_id"] = custom_id
         if description:
-            params['description'] = description
+            params["description"] = description
         if image:
-            params['image'] = image
+            params["image"] = image
         if tags:
-            params['tags'] = tags
+            params["tags"] = tags
         if skills:
-            params['skills'] = skills
+            params["skills"] = skills
         if duration:
-            params['duration_str'] = duration
+            params["duration_str"] = duration
         if provider_name:
-            params['provider_name'] = provider_name
+            params["provider_name"] = provider_name
         if provider_id:
-            params['provider_custom_id'] = provider_id
+            params["provider_custom_id"] = provider_id
 
-        content = self.client.put('content/{0}'.format(id), {'content': params})
+        content = self.client.put("content/{0}".format(id), {"content": params})
         return self._to_content(content)
 
     def delete(self, id):
@@ -293,7 +318,7 @@ class ContentClient(object):
         :param id: The identifier
         :type  id: ``str``
         """
-        self.client.delete('content/{0}'.format(id))
+        self.client.delete("content/{0}".format(id))
 
     def starts_and_completions(self, from_page=None):
         """
@@ -311,16 +336,17 @@ class ContentClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
-        content = self.client.get_paged('user_content', params=params)
+        content = self.client.get_paged("user_content", params=params)
         results = []
         for page in content:
-            results.extend([self._to_user_content(i) for i in page['results']])
+            results.extend([self._to_user_content(i) for i in page["results"]])
         return results
 
-    def log_completion(self, content_id, completed_at='now',
-                       user_id=None, user_email=None):
+    def log_completion(
+        self, content_id, completed_at="now", user_id=None, user_email=None
+    ):
         """
         Logs that a user completed content. Use this API to automatically update a user's
         Pathgather profile with learning activity that occurs in a different system.
@@ -343,19 +369,16 @@ class ContentClient(object):
         :return: A registration of user content completion
         :rtype: :class:`pathgather.models.content.UserContent`
         """
-        params = {
-            'content_id': content_id,
-            'completed_at': completed_at
-        }
+        params = {"content_id": content_id, "completed_at": completed_at}
         if user_id:
-            params['user_id'] = user_id
+            params["user_id"] = user_id
         else:
             if user_email:
-                params['user_email'] = user_email
+                params["user_email"] = user_email
             else:
                 raise ValueError("user_email or user_id required")
 
-        content = self.client.post('user_content', params)
+        content = self.client.post("user_content", params)
         return self._to_user_content(content)
 
     def get_comments(self, id, from_page=None, query=None):
@@ -377,16 +400,18 @@ class ContentClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
         data = None
         if query is not None:
-            data = json.dumps({'q': query})
+            data = json.dumps({"q": query})
 
-        content = self.client.get_paged('content/{0}/comments'.format(id), params=params, data=data)
+        content = self.client.get_paged(
+            "content/{0}/comments".format(id), params=params, data=data
+        )
         results = []
         for page in content:
-            results.extend([self._to_content_comment(i) for i in page['results']])
+            results.extend([self._to_content_comment(i) for i in page["results"]])
         return results
 
     def create_comment(self, id, message, user_id, custom_id=None):
@@ -408,15 +433,13 @@ class ContentClient(object):
         :return: A content item comment
         :rtype: :class:`pathgather.models.content.ContentComment`
         """
-        params = {
-            'message': message,
-            'user_id': user_id,
-        }
+        params = {"message": message, "user_id": user_id}
         if custom_id:
-            params['custom_id'] = custom_id
-        
+            params["custom_id"] = custom_id
 
-        response = self.client.post('content/{0}/comments'.format(id), {'comment': params})
+        response = self.client.post(
+            "content/{0}/comments".format(id), {"comment": params}
+        )
         return self._to_content_comment(response)
 
     def delete_comment(self, id, comment_id):
@@ -430,24 +453,24 @@ class ContentClient(object):
         :type  comment_id: ``str``
 
         """
-        return self.client.delete('content/{0}/comments/{1}'.format(id, comment_id))
+        return self.client.delete("content/{0}/comments/{1}".format(id, comment_id))
 
     def _to_content_comment(self, data):
         scrub(data)
-        data['user'] = User(**data['user'])
-        if 'content' in data:
-            data['content'] = Content(**data['content'])
+        data["user"] = User(**data["user"])
+        if "content" in data:
+            data["content"] = Content(**data["content"])
         return ContentComment(**data)
 
     def _to_content(self, data):
         scrub(data)
-        if 'provider' in data:
-            data['provider'] = ContentProvider(**data['provider'])
+        if "provider" in data:
+            data["provider"] = ContentProvider(**data["provider"])
         return Content(**data)
 
     def _to_user_content(self, data):
         scrub(data)
-        data['user'] = User(**data['user'])
-        data['content'] = Content(**data['content'])
-        data['content'].provider = ContentProvider(**data['content'].provider)
+        data["user"] = User(**data["user"])
+        data["content"] = Content(**data["content"])
+        data["content"].provider = ContentProvider(**data["content"].provider)
         return UserContent(**data)

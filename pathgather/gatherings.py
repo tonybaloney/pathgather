@@ -17,9 +17,13 @@
 from .utils import scrub
 from .models.user import User
 from .models.skill import Skill
-from .models.gathering import (Gathering, GatheringUser,
-                               GatheringContent, GatheringInvite,
-                               GatheringPath)
+from .models.gathering import (
+    Gathering,
+    GatheringUser,
+    GatheringContent,
+    GatheringInvite,
+    GatheringPath,
+)
 from .models.content import Content
 from .models.path import Path
 
@@ -43,12 +47,12 @@ class GatheringsClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
-        users = self.client.get_paged('gatherings', params=params)
+        users = self.client.get_paged("gatherings", params=params)
         results = []
         for page in users:
-            results.extend([self._to_gathering(i) for i in page['results']])
+            results.extend([self._to_gathering(i) for i in page["results"]])
         return results
 
     def get(self, id):
@@ -61,11 +65,18 @@ class GatheringsClient(object):
         :return: An instance :class:`pathgather.models.gathering.Gathering`
         :rtype: :class:`pathgather.models.gathering.Gathering`
         """
-        user = self.client.get('gatherings/{0}'.format(id))
+        user = self.client.get("gatherings/{0}".format(id))
         return self._to_gathering(user)
 
-    def create(self, name, custom_id=None, description=None, closed=True,
-               image=None, skills=None):
+    def create(
+        self,
+        name,
+        custom_id=None,
+        description=None,
+        closed=True,
+        image=None,
+        skills=None,
+    ):
         """
         Create a gathering.
 
@@ -95,24 +106,29 @@ class GatheringsClient(object):
         :return: A gathering
         :rtype: :class:`pathgather.models.gathering.Gathering`
         """
-        params = {
-            'name': name,
-            'closed': closed
-        }
+        params = {"name": name, "closed": closed}
         if custom_id:
-            params['custom_id'] = custom_id
+            params["custom_id"] = custom_id
         if description:
-            params['description'] = description
+            params["description"] = description
         if image:
-            params['image'] = image
+            params["image"] = image
         if skills:
-            params['skills'] = skills
+            params["skills"] = skills
 
-        content = self.client.post('gatherings', {'gathering': params})
+        content = self.client.post("gatherings", {"gathering": params})
         return self._to_gathering(content)
 
-    def update(self, id, name, custom_id=None, description=None,
-               closed=True, image=None, skills=None):
+    def update(
+        self,
+        id,
+        name,
+        custom_id=None,
+        description=None,
+        closed=True,
+        image=None,
+        skills=None,
+    ):
         """
         Update a gathering.
 
@@ -147,19 +163,19 @@ class GatheringsClient(object):
         """
         params = {}
         if name:
-            params['name'] = name
+            params["name"] = name
         if closed:
-            params['closed'] = closed
+            params["closed"] = closed
         if custom_id:
-            params['custom_id'] = custom_id
+            params["custom_id"] = custom_id
         if description:
-            params['description'] = description
+            params["description"] = description
         if image:
-            params['image'] = image
+            params["image"] = image
         if skills:
-            params['skills'] = skills
+            params["skills"] = skills
 
-        content = self.client.put('gatherings/{0}'.format(id), {'gathering': params})
+        content = self.client.put("gatherings/{0}".format(id), {"gathering": params})
         return self._to_gathering(content)
 
     def users(self, id, from_page=None):
@@ -175,12 +191,12 @@ class GatheringsClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
-        users = self.client.get_paged('gatherings/{0}/users'.format(id), params=params)
+        users = self.client.get_paged("gatherings/{0}/users".format(id), params=params)
         results = []
         for page in users:
-            results.extend([self._to_user_gathering(i) for i in page['results']])
+            results.extend([self._to_user_gathering(i) for i in page["results"]])
         return results
 
     def invite_user(self, id, user_id):
@@ -196,17 +212,13 @@ class GatheringsClient(object):
         :return: An instance :class:`pathgather.models.gathering.UserGathering`
         :rtype: :class:`pathgather.models.gathering.UserGathering`
         """
-        params = {
-            'gathering_invite': {
-                'invitee_id': user_id
-            }
-        }
-        data = self.client.post('gatherings/{0}/gathering_invites'.format(id), params)
+        params = {"gathering_invite": {"invitee_id": user_id}}
+        data = self.client.post("gatherings/{0}/gathering_invites".format(id), params)
         scrub(data)
-        if 'inviter' in data:
-            data['inviter'] = User(**data['inviter'])
-        if 'invitee' in data:
-            data['invitee'] = User(**data['invitee'])
+        if "inviter" in data:
+            data["inviter"] = User(**data["inviter"])
+        if "invitee" in data:
+            data["invitee"] = User(**data["invitee"])
         return GatheringInvite(**data)
 
     def remove_user(self, id, user_id):
@@ -219,7 +231,7 @@ class GatheringsClient(object):
         :param user_id: The user id
         :type  user_id: ``str``
         """
-        self.client.delete('gatherings/{0}/users/{1}'.format(id, user_id))
+        self.client.delete("gatherings/{0}/users/{1}".format(id, user_id))
 
     def content(self, id, from_page=None):
         """
@@ -234,13 +246,14 @@ class GatheringsClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
-        content = self.client.get_paged('gatherings/{0}/contents'.format(id),
-                                        params=params)
+        content = self.client.get_paged(
+            "gatherings/{0}/contents".format(id), params=params
+        )
         results = []
         for page in content:
-            results.extend([self._to_content_gathering(i) for i in page['results']])
+            results.extend([self._to_content_gathering(i) for i in page["results"]])
         return results
 
     def add_content(self, id, content_id):
@@ -259,12 +272,12 @@ class GatheringsClient(object):
         :rtype: ``dict``
         """
         params = {
-            'recommendation_to_gathering': {
-                'course_id': content_id,
-                'gathering_ids': [id]
+            "recommendation_to_gathering": {
+                "course_id": content_id,
+                "gathering_ids": [id],
             }
         }
-        content = self.client.post('recommendation_to_gathering', params)
+        content = self.client.post("recommendation_to_gathering", params)
         return content
 
     def remove_content(self, id, content_id):
@@ -277,7 +290,7 @@ class GatheringsClient(object):
         :param content_id: The content id
         :type  content_id: ``str``
         """
-        self.client.delete('gatherings/{0}/contents/{1}'.format(id, content_id))
+        self.client.delete("gatherings/{0}/contents/{1}".format(id, content_id))
 
     def paths(self, id, from_page=None):
         """
@@ -292,12 +305,14 @@ class GatheringsClient(object):
         params = {}
 
         if from_page is not None:
-            params['from'] = from_page
+            params["from"] = from_page
 
-        content = self.client.get_paged('gatherings/{0}/paths'.format(id), params=params)
+        content = self.client.get_paged(
+            "gatherings/{0}/paths".format(id), params=params
+        )
         results = []
         for page in content:
-            results.extend([self._to_path_gathering(i) for i in page['results']])
+            results.extend([self._to_path_gathering(i) for i in page["results"]])
         return results
 
     def remove_path(self, id, path_id):
@@ -310,7 +325,7 @@ class GatheringsClient(object):
         :param path_id: The path id
         :type  path_id: ``str``
         """
-        self.client.delete('gatherings/{0}/paths/{1}'.format(id, path_id))
+        self.client.delete("gatherings/{0}/paths/{1}".format(id, path_id))
 
     def delete(self, id):
         """
@@ -319,42 +334,42 @@ class GatheringsClient(object):
         :param id: The gathering ID
         :type  id: ``str``
         """
-        self.client.delete('gatherings/{0}'.format(id))
+        self.client.delete("gatherings/{0}".format(id))
 
     def _to_gathering(self, data):
         scrub(data)
-        if 'user' in data:
-            data['user'] = User(**data['user'])
-        if 'skills' in data:
+        if "user" in data:
+            data["user"] = User(**data["user"])
+        if "skills" in data:
             _skills = []
-            for skill in data['skills']:
+            for skill in data["skills"]:
                 _skills.append(Skill(**skill))
-            data['skills'] = _skills
+            data["skills"] = _skills
         return Gathering(**data)
 
     def _to_user_gathering(self, data):
         scrub(data)
-        if 'user' in data:
-            data['user'] = User(**data['user'])
-        if 'gathering' in data:
-            data['gathering'] = Gathering(**data['gathering'])
+        if "user" in data:
+            data["user"] = User(**data["user"])
+        if "gathering" in data:
+            data["gathering"] = Gathering(**data["gathering"])
         return GatheringUser(**data)
 
     def _to_content_gathering(self, data):
         scrub(data)
-        if 'course' in data:
-            data['course'] = Content(**data['course'])
-        if 'user' in data:
-            data['user'] = User(**data['user'])
-        if data['course'].sharer is not None:
-            data['course'].sharer = User(**data['course'].sharer)
+        if "course" in data:
+            data["course"] = Content(**data["course"])
+        if "user" in data:
+            data["user"] = User(**data["user"])
+        if data["course"].sharer is not None:
+            data["course"].sharer = User(**data["course"].sharer)
         return GatheringContent(**data)
 
     def _to_path_gathering(self, data):
         scrub(data)
-        if 'path' in data:
-            data['path'] = Path(**data['path'])
-        if 'user' in data:
-            data['user'] = User(**data['user'])
+        if "path" in data:
+            data["path"] = Path(**data["path"])
+        if "user" in data:
+            data["user"] = User(**data["user"])
 
         return GatheringPath(**data)
