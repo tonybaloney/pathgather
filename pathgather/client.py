@@ -22,6 +22,7 @@ from .content import ContentClient
 from .paths import PathsClient
 from .gatherings import GatheringsClient
 from .skills import SkillsClient
+from .providers import ProvidersClient
 
 
 class PathgatherClient(object):
@@ -72,14 +73,15 @@ class PathgatherClient(object):
         self._paths = PathsClient(self)
         self._gatherings = GatheringsClient(self)
         self._skills = SkillsClient(self)
+        self._providers = ProvidersClient(self)
 
     def get(self, uri, params=None, data=None):
         try:
             if params:
-                if 'per_page' not in params:
-                    params['per_page'] = self.results_per_page
+                if "per_page" not in params:
+                    params["per_page"] = self.results_per_page
             else:
-                params = {'per_page': self.results_per_page}
+                params = {"per_page": self.results_per_page}
             result = self.session.get(
                 "{0}/{1}".format(self.base_url, uri), params=params, data=data
             )
@@ -173,3 +175,12 @@ class PathgatherClient(object):
         :rtype: :class:`pathgather.skills.SkillsClient`
         """
         return self._skills
+
+    @property
+    def providers(self):
+        """
+        Pathgather Providers
+
+        :rtype: :class:`pathgather.providers.ProvidersClient`
+        """
+        return self._providers

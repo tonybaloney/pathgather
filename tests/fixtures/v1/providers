@@ -1,0 +1,104 @@
+{
+    "results": [
+        {
+            "id": "da8c319c-192c-4a8f-9d73-c2cd59626afb",
+            "created_at": "2018-07-04T19:59:11.720-04:00",
+            "updated_at": "2018-07-04T19:59:11.720-04:00",
+            "custom_id": "tech_know_podcast",
+            "name": "Dimension Data's \"Tech Know\" Podcast",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        },
+        {
+            "id": "398d5700-b7c9-4926-b0cc-e0a45963984f",
+            "created_at": "2018-07-03T01:17:28.147-04:00",
+            "updated_at": "2018-07-03T01:17:28.147-04:00",
+            "custom_id": null,
+            "name": "not.a.domain",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        },
+        {
+            "id": "c54943e8-aa0b-405d-8101-2316193907b4",
+            "created_at": "2018-06-19T01:06:40.326-04:00",
+            "updated_at": "2018-06-19T01:06:40.326-04:00",
+            "custom_id": "sap_open",
+            "name": "SAP Open",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        },
+        {
+            "id": "c57f2bc8-d69d-42ba-bbcb-2a62c1a14f6f",
+            "created_at": "2018-03-07T11:37:52.429-05:00",
+            "updated_at": "2018-03-07T11:37:52.429-05:00",
+            "custom_id": "Microsoft-Learning",
+            "name": "Microsoft Learning",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        },
+        {
+            "id": "c681f20b-5304-460d-9ea6-4148caece363",
+            "created_at": "2018-02-04T01:56:29.391-05:00",
+            "updated_at": "2018-02-04T01:56:29.391-05:00",
+            "custom_id": "mva",
+            "name": "Microsoft Virtual Academy",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        },
+        {
+            "id": "fd0bcc42-05ff-443e-9c13-523025bad80a",
+            "created_at": "2017-12-07T16:39:35.162-05:00",
+            "updated_at": "2017-12-07T16:39:35.162-05:00",
+            "custom_id": "talk_python_podcast",
+            "name": "Talk Python to Me Podcast",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        },
+        {
+            "id": "4f1fe3a7-06a6-4a0b-ab87-a18f03e28ae8",
+            "created_at": "2017-12-07T00:06:20.663-05:00",
+            "updated_at": "2017-12-07T00:06:20.663-05:00",
+            "custom_id": "cisco_learning_labs",
+            "name": "Cisco Learning Labs",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        },
+        {
+            "id": "a95324cb-d154-4c7a-9183-fef0e9a22b25",
+            "created_at": "2017-10-03T05:18:59.457-04:00",
+            "updated_at": "2017-10-03T05:18:59.457-04:00",
+            "custom_id": null,
+            "name": "linkedin.com",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        },
+        {
+            "id": "29ab0b6e-9c46-4443-9a7a-e9d448d5d9ba",
+            "created_at": "2017-09-04T08:48:24.157-04:00",
+            "updated_at": "2017-09-04T08:48:24.157-04:00",
+            "custom_id": null,
+            "name": "webex.com",
+            "_type": "Provider",
+            "may_require_vpn": false,
+            "may_not_be_mobile_friendly": false,
+            "is_subscribed": true
+        }
+    ],
+    "next": null
+}
