@@ -75,6 +75,7 @@ Features
 * Gathering management and gathering membership
 * Gathering Content and Path management
 * Skills
+* Creating and listing comments on paths and content items
 
 Missing
 -------
@@ -82,7 +83,6 @@ Missing
 The following features are in the API but not yet in this client
 
 * Conversations
-* Comments 
 
 Credits
 ---------
