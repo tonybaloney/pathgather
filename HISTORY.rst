@@ -2,6 +2,11 @@
 History
 =======
 
+1.11.0
+------
+
+* Add providers API
+
 1.10.0
 ------
 

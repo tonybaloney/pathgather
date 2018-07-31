@@ -320,7 +320,7 @@ class ContentClient(object):
         """
         self.client.delete("content/{0}".format(id))
 
-    def starts_and_completions(self, from_page=None):
+    def starts_and_completions(self, from_page=None, query=None):
         """
         Returns objects representing a user's interaction
         (starts and completions) with content.
@@ -337,8 +337,10 @@ class ContentClient(object):
 
         if from_page is not None:
             params["from"] = from_page
-
-        content = self.client.get_paged("user_content", params=params)
+        data = None
+        if query:
+            data = json.dumps({'q': query})
+        content = self.client.get_paged("user_content", params=params, data=data)
         results = []
         for page in content:
             results.extend([self._to_user_content(i) for i in page["results"]])
