@@ -260,8 +260,6 @@ class GatheringsClient(object):
         """
         Add a piece of content to a gathering
 
-        :todo: This function does not work, cannot find a working example on the API
-
         :param id: The gathering id
         :type  id: ``str``
 
@@ -272,12 +270,11 @@ class GatheringsClient(object):
         :rtype: ``dict``
         """
         params = {
-            "recommendation_to_gathering": {
-                "course_id": content_id,
-                "gathering_ids": [id],
+            "content": {
+                "id": content_id
             }
         }
-        content = self.client.post("recommendation_to_gathering", params)
+        content = self.client.post("gatherings/{0}/contents".format(id), params)
         return content
 
     def remove_content(self, id, content_id):

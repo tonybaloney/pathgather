@@ -2,6 +2,11 @@
 History
 =======
 
+1.12.0
+------
+
+* Fix the feature to add content to a gathering.
+
 1.11.0
 ------
 
