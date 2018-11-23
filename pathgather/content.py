@@ -287,7 +287,7 @@ class ContentClient(object):
             params["source_url"] = source_url
         if topic_name:
             params["topic_name"] = topic_name
-        if enabled:
+        if enabled is not None:
             params["enabled"] = enabled
         if level:
             params["level"] = level

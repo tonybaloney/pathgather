@@ -2,6 +2,11 @@
 History
 =======
 
+1.12.0
+------
+
+* Fix bug in deactivating content.
+
 1.11.0
 ------
 
