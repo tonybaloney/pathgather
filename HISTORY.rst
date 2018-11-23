@@ -2,10 +2,15 @@
 History
 =======
 
-1.12.0
+1.13.0
 ------
 
 * Fix bug in deactivating content.
+
+1.12.0
+------
+
+* Fix the feature to add content to a gathering.
 
 1.11.0
 ------
