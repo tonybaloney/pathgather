@@ -180,7 +180,7 @@ def test_add_gathering_content():
             "3578d16a-381a-4041-a6bb-1b3957fc8e94",
             "9dbd1b62-2d6e-414a-9e4c-253d17693f09",
         )
-        assert response["gathering_recommendations_count"] == 1
+        assert response['user']['job_title'] == "CTO"
 
 
 def test_delete_gathering_content():

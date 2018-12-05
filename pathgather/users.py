@@ -399,9 +399,9 @@ class UsersClient(object):
 
     def _to_user(self, data):
         scrub(data)
-        if "department" in data:
+        if "department" in data and data["department"] is not None:
             data["department"] = Department(**data["department"])
-        if "user_skills" in data:
+        if "user_skills" in data and data["user_skills"] is not None:
             _skills = []
             for skill in data["user_skills"]:
                 skill["skill"] = Skill(**skill["skill"])

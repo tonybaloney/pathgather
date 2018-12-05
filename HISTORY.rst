@@ -2,6 +2,11 @@
 History
 =======
 
+1.14.0
+------
+
+* Fix bug when department isn't set for a user and paging all users (even deactivated ones)
+
 1.13.0
 ------
 
